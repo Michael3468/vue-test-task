@@ -1,11 +1,11 @@
-<script setup lang="js">
+<script setup lang="ts">
 import { ref } from 'vue';
 import { RouterLink } from 'vue-router';
 
-const navbarLinks = ref(null);
+const navbarLinks = ref<HTMLElement | null>(null);
 
 function toggleLinks() {
-  navbarLinks.value.classList.toggle('navbar-links_visible');
+  navbarLinks.value?.classList.toggle('navbar-links_visible');
 }
 </script>
 
