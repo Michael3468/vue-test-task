@@ -18,8 +18,7 @@ function toggleLinks() {
     >
 
     <ul class="navbar-links" ref="navbarLinks">
-      <li class="navbar-link"><RouterLink to="/">Home</RouterLink></li>
-      <li class="navbar-link"><RouterLink to="/price">Расчет стоимости</RouterLink></li>
+      <li class="navbar-link"><RouterLink to="/">Расчет стоимости</RouterLink></li>
       <li class="navbar-link"><RouterLink to="/about">О нас</RouterLink></li>
       <li class="navbar-link"><RouterLink to="/registration">Выездная регистрация</RouterLink></li>
       <li class="navbar-link"><RouterLink to="/halls">Схемы залов</RouterLink></li>
