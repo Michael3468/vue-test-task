@@ -1,5 +1,9 @@
+<script setup lang="ts">
+import HSQuiz from '../components/HSQuiz.vue';
+</script>
+
 <template>
   <main>
-    <h1>Home page</h1>
+    <HSQuiz />
   </main>
 </template>

@@ -1,7 +1,7 @@
 <script setup lang="js">
-import TheBurger from './TheBurger.vue';
-import TheLogo from './TheLogo.vue';
-import CallButton from './CallButton.vue';
+import HSBurger from './HSBurger.vue';
+import HSLogo from './HSLogo.vue';
+import HSButtonCall from './HSButtonCall.vue';
 </script>
 
 <template>
@@ -10,15 +10,15 @@ import CallButton from './CallButton.vue';
       <div class="header-items">
         <div class="header-navbar-logo">
           <div class="header-navbar">
-            <TheBurger />
+            <HSBurger />
           </div>
   
           <div class="header-logo">
-            <TheLogo />
+            <HSLogo />
           </div>
         </div>
 
-        <CallButton />
+        <HSButtonCall />
       </div>
     </div>
   </header>

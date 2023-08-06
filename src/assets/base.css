@@ -1,25 +1,13 @@
 /* color palette from <https://github.com/vuejs/theme> */
 :root {
   --color-main: #C6AF66;
-  --font-color: #18191B;
-  --font-color-active-link: var(--color-main);
+  --font-color-main: #18191B;
+  --font-color-second: #FFFFFF;
+  --font-color-main-active-link: var(--color-main);
 
   --font-family-roboto: 'Roboto', sans-serif;
-}
-
-/* semantic color variables for this project */
-:root {
-  --color-background: var(--vt-c-white);
-  --color-background-soft: var(--vt-c-white-soft);
-  --color-background-mute: var(--vt-c-white-mute);
-
-  --color-border: var(--vt-c-divider-light-2);
-  --color-border-hover: var(--vt-c-divider-light-1);
-
-  --color-heading: var(--vt-c-text-light-1);
-  --color-text: var(--vt-c-text-light-1);
-
-  --section-gap: 160px;
+  --font-family-p052: 'P052', sans-serif;
+  --font-family-lato: 'Lato', sans-serif;
 }
 
 *,

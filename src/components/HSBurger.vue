@@ -1,7 +1,7 @@
 <script setup lang="js">
-import NavBar from './NavBar.vue';
+import HSNavBar from './HSNavBar.vue';
 </script>
 
 <template>
-  <NavBar />
+  <HSNavBar />
 </template>

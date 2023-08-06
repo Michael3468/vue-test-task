@@ -64,11 +64,11 @@ function toggleLinks() {
 }
 
 .navbar-link>a {
-  color: var(--font-color);
+  color: var(--font-color-main);
   text-decoration: none;
 }
 
 a.router-link-active {
-  color: var(--font-color-active-link);
+  color: var(--font-color-main-active-link);
 }
 </style>
