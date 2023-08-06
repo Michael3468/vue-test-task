@@ -46,7 +46,7 @@ import HSButtonArrow from './HSButtonArrow.vue';
   background-image: url('../assets/img/quiz-start-background.png');
   width: 360px;
   height: 280px;
-  border-radius: 16px;
+  border-radius: var(--border-radius-big);
 }
 
 .quiz-start-screen-bottle {

@@ -19,7 +19,7 @@ defineProps<{
   font-family: var(--font-family-roboto);
   
   padding: 14px 24px 14px 31px;
-  border-radius: 4px;
+  border-radius: var(--border-radius-small);
 }
 
 .button-arrow__text {

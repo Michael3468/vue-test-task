@@ -11,6 +11,9 @@
   --font-family-roboto: 'Roboto', sans-serif;
   --font-family-p052: 'P052', sans-serif;
   --font-family-lato: 'Lato', sans-serif;
+
+  --border-radius-small: 4px;
+  --border-radius-big: 16px;
 }
 
 *,

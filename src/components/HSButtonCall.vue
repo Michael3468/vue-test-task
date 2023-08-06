@@ -7,7 +7,7 @@
   background-color: var(--color-main);
   padding: 0 16px;
   height: 36px;
-  border-radius: 4px;
+  border-radius: var(--border-radius-small);
   color: white;
 
   font-family: var(--font-family-roboto);
