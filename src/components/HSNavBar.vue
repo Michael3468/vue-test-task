@@ -63,11 +63,6 @@ function toggleLinks() {
   background: rgba(0, 0, 0, 0.1);
 }
 
-.navbar-link>a {
-  color: var(--font-color-main);
-  text-decoration: none;
-}
-
 a.router-link-active {
   color: var(--font-color-main-active-link);
 }

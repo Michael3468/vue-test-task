@@ -1,6 +1,9 @@
 /* color palette from <https://github.com/vuejs/theme> */
 :root {
   --color-main: #C6AF66;
+
+  --color-background: #FFFFFF;
+
   --font-color-main: #18191B;
   --font-color-second: #FFFFFF;
   --font-color-main-active-link: var(--color-main);
@@ -21,7 +24,7 @@
 
 body {
   min-height: 100vh;
-  color: var(--color-text);
+  color: var(--font-color-main);
   background: var(--color-background);
   transition:
     color 0.5s,
@@ -49,4 +52,8 @@ body {
 button {
   border: 0;
   cursor: pointer;
+}
+
+a {
+  text-decoration: none;
 }
