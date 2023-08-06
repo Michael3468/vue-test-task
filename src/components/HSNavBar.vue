@@ -30,7 +30,7 @@ function toggleLinks() {
   </nav>
 </template>
 
-<style scoped>
+<style>
 .navbar {
   display: flex;
   flex-direction: column;

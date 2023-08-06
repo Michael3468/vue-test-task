@@ -25,7 +25,7 @@ import HSButtonArrow from './HSButtonArrow.vue';
 </div>
 </template>
 
-<style >
+<style>
 .quiz-start-caption {
   font-family: var(--font-family-p052);
   color: var(--font-color-main);
