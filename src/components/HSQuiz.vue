@@ -45,7 +45,6 @@ import HSButtonArrow from './HSButtonArrow.vue';
   width: 360px;
   height: 280px;
   border-radius: var(--border-radius-big);
-  z-index: -1;
 }
 
 .quiz-start-screen-bottle {

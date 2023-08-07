@@ -26,6 +26,8 @@ import HSButtonCall from './HSButtonCall.vue';
 
 <style>
 header {
+  position: relative;
+  z-index: 1000;
   display: flex;
   width: 100%;
 

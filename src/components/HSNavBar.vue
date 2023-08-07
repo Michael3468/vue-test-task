@@ -18,6 +18,7 @@ function toggleLinks() {
     >
 
     <!-- TODO: v-for -->
+    <!-- TODO: click on li open link -->
     <ul class="navbar-links" ref="navbarLinks">
       <li class="navbar-link"><RouterLink to="/">Расчет стоимости</RouterLink></li>
       <li class="navbar-link"><RouterLink to="/about">О нас</RouterLink></li>
@@ -35,7 +36,6 @@ function toggleLinks() {
 .navbar {
   display: flex;
   flex-direction: column;
-  position: relative;
   width: 24px;
   height: 24px;
   cursor: pointer;
@@ -53,6 +53,8 @@ function toggleLinks() {
 
 .navbar-links_visible {
   display: block;
+  position: relative;
+  top: 0;
 }
 
 .navbar-link {
