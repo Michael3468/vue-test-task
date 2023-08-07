@@ -24,7 +24,7 @@ defineProps<{
 
 .button-arrow__text {
   color: var(--font-color-second);
-  margin-right: 16px;
-  font-size: 14px;
+  margin-right: 18px;
+  font-size: 15px;
 }
 </style>
