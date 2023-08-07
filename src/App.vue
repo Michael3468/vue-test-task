@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import { RouterView } from 'vue-router'
 import HSHeader from './components/HSHeader.vue'
+import HSFooter from './components/HSFooter.vue'
 </script>
 
 <template>
   <HSHeader />
-
   <RouterView />
+  <HSFooter />
 </template>
 
 <style scoped>

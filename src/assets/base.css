@@ -3,23 +3,26 @@
   --color-main: #C6AF66;
   --color-second: #F7F7F8;
   --color-third: #FFFFFF;
+  --color-fourth: #ACADA5;
 
-
+  /* TODO: rename colors */
   --color-background: var(--color-third);
+  --color-background-second: #424343;
 
   --font-color-main: #18191B;
   --font-color-second: var(--color-third);
-  --font-color-third: #ACADA5;
+  --font-color-third: var(--color-fourth);
   --font-color-fourth: var(--color-main);
   --font-color-main-active-link: var(--color-main);
+  
+  --tab-background: #E9EAEC;
+  --tab-background-active: var(--color-second);
+  --tab-content: var(--color-second);
 
   --font-family-roboto: 'Roboto', sans-serif;
   --font-family-p052: 'P052', sans-serif;
   --font-family-lato: 'Lato', sans-serif;
 
-  --tab-background: #E9EAEC;
-  --tab-background-active: var(--color-second);
-  --tab-content: var(--color-second);
 
   --border-radius-small: 4px;
   --border-radius-big: 16px;
