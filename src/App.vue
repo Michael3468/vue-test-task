@@ -6,8 +6,12 @@ import HSFooter from './components/HSFooter.vue'
 
 <template>
   <HSHeader />
-  <RouterView />
-  <HSFooter />
+
+  <div class="content">
+    <RouterView />
+  </div>
+
+<HSFooter />
 </template>
 
 <style scoped>
@@ -29,5 +33,9 @@ import HSFooter from './components/HSFooter.vue'
   font-weight: 400;
   font-display: auto;
   font-style: normal;
+}
+
+.content {
+  min-height: calc(100vh - var(--footer-height));
 }
 </style>

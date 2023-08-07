@@ -25,8 +25,6 @@ import HSLogoFooter from './HSLogoFooter.vue';
 
 <style>
 footer {
-  display: flex;
-  flex: 0 0 auto;
   border-radius: 20px 20px 0px 0px;
   background-color: var(--color-background-second);
   margin-top: 23px;
