@@ -1,16 +1,25 @@
 /* color palette from <https://github.com/vuejs/theme> */
 :root {
   --color-main: #C6AF66;
+  --color-second: #F7F7F8;
+  --color-third: #FFFFFF;
 
-  --color-background: #FFFFFF;
+
+  --color-background: var(--color-third);
 
   --font-color-main: #18191B;
-  --font-color-second: #FFFFFF;
+  --font-color-second: var(--color-third);
+  --font-color-third: #ACADA5;
+  --font-color-fourth: var(--color-main);
   --font-color-main-active-link: var(--color-main);
 
   --font-family-roboto: 'Roboto', sans-serif;
   --font-family-p052: 'P052', sans-serif;
   --font-family-lato: 'Lato', sans-serif;
+
+  --tab-background: #E9EAEC;
+  --tab-background-active: var(--color-second);
+  --tab-content: var(--color-second);
 
   --border-radius-small: 4px;
   --border-radius-big: 16px;
@@ -59,4 +68,9 @@ button {
 
 a {
   text-decoration: none;
+}
+
+h2 {
+  font-family: var(--font-family-p052);
+  font-size: 20px;
 }

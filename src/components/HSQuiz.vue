@@ -27,8 +27,6 @@ import HSButtonArrow from './HSButtonArrow.vue';
 
 <style>
 .quiz-start-caption {
-  font-family: var(--font-family-p052);
-  font-size: 20px;
   line-height: 28px;
   margin-top: 11px;
 }
