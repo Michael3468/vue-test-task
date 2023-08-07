@@ -18,7 +18,6 @@ function toggleLinks() {
     >
 
     <!-- TODO: v-for -->
-    <!-- TODO: click on li open link -->
     <ul class="navbar-links" ref="navbarLinks">
       <li class="navbar-link"><RouterLink to="/">Расчет стоимости</RouterLink></li>
       <li class="navbar-link"><RouterLink to="/about">О нас</RouterLink></li>
@@ -62,6 +61,7 @@ function toggleLinks() {
 }
 
 .navbar-link > a {
+  display: block;
   color: var(--font-color-main);
 }
 
