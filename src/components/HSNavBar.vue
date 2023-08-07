@@ -17,6 +17,7 @@ function toggleLinks() {
       @click="toggleLinks"
     >
 
+    <!-- TODO: v-for -->
     <ul class="navbar-links" ref="navbarLinks">
       <li class="navbar-link"><RouterLink to="/">Расчет стоимости</RouterLink></li>
       <li class="navbar-link"><RouterLink to="/about">О нас</RouterLink></li>
@@ -42,7 +43,7 @@ function toggleLinks() {
 
 .navbar-links {
   display: none;
-  background: white;
+  background: var(--color-background);
   width: 80vw;
   max-width: 320px;
   box-shadow: 0px 0px 10px black;
