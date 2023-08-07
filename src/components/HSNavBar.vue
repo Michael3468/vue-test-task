@@ -42,7 +42,6 @@ function toggleLinks() {
 
 .navbar-links {
   display: none;
-  position: absolute;
   background: white;
   width: 80vw;
   max-width: 320px;
@@ -57,6 +56,10 @@ function toggleLinks() {
 
 .navbar-link {
   list-style-type: none;
+}
+
+.navbar-link > a {
+  color: var(--font-color-main);
 }
 
 .navbar-link:hover {
