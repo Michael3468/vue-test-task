@@ -83,4 +83,5 @@ a {
 h2 {
   font-family: var(--font-family-p052);
   font-size: 20px;
+  letter-spacing: 0.1px;
 }
