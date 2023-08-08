@@ -50,7 +50,7 @@ const tabs = [
 
 let filteredTabs = ref(tabs);
 
-function selectTab(tabId: number) {
+const selectTab = (tabId: number) => {
   activeTab.value = tabId;
 
   filteredTabs.value = tabs.filter((tab) => tab.id === activeTab.value);

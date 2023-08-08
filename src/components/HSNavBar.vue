@@ -4,9 +4,7 @@ import { RouterLink } from 'vue-router';
 
 const navbarLinks = ref<HTMLElement | null>(null);
 
-function toggleLinks() {
-  navbarLinks.value?.classList.toggle('navbar-links_visible');
-}
+const toggleLinks = () => navbarLinks.value?.classList.toggle('navbar-links_visible');
 </script>
 
 <template>
