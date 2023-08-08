@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
 import HSButtonArrow from './HSButtonArrow.vue';
+import HSQuizText from './HSQuizText.vue';
 
 interface IQuestions {
   text: string;
@@ -103,10 +104,10 @@ const questionsWord = computed(() => {
 <div class="quiz">
   <div class="container">
     <h2 class="quiz-caption">Рассчитайте стоимость вашего банкета</h2>
-    <p class="quiz-text">
-      Ответьте на {{ questions.length }} {{ questionsWord }} и получите горку
-      <br /> из шампанского в подарок
-    </p>
+
+    <div class="quiz-text-mobile">
+      <HSQuizText :questionsCount="questions.length" :questionsWord="questionsWord"/>
+    </div>
   </div>
 
   <div class="container.container-paddings-reset">
@@ -185,11 +186,22 @@ const questionsWord = computed(() => {
   margin-top: 11px;
 }
 
-.quiz-text {
-  margin-top: 9px;
-  font-family: var(--font-family-lato);
-  font-size: 14px;
-  line-height: 20px;
+@media screen and (min-width: 960px) {
+  .quiz-caption {
+    margin-top: 27px;
+    /* TODO: wv */
+    font-size: 40px;
+  }
+}
+
+.quiz-text-mobile {
+  display: block;
+}
+
+@media screen and (min-width: 960px) {
+  .quiz-text-mobile {
+    display: none;
+  }
 }
 
 /* start screen */
