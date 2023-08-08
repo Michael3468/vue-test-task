@@ -4,15 +4,20 @@
   --color-second: #F7F7F8;
   --color-third: #FFFFFF;
   --color-fourth: #ACADA5;
+  --color-fifth: #424343;
+  --color-sixth: #63636F;
 
   /* TODO: rename colors */
   --color-background: var(--color-third);
-  --color-background-second: #424343;
+  --color-background-second: var(--color-fifth);
+  --color-background-third: var(--color-main);
 
   --font-color-main: #18191B;
   --font-color-second: var(--color-third);
   --font-color-third: var(--color-fourth);
   --font-color-fourth: var(--color-main);
+  --font-color-sixth: var(--color-fifth);
+  --font-color-seven: var(--color-sixth);
   --font-color-main-active-link: var(--color-main);
   
   --tab-background: #E9EAEC;
