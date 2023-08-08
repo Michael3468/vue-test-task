@@ -17,6 +17,14 @@
   padding: 0 15px;
 }
 
+/* TODO: (max-width)1588px + paddings(15+15)px = 1618px */
+@media screen and (min-width: 1618px) {
+  .container {
+    padding: 0;
+  }
+}
+
+/* TODO: remove */
 .container-paddings-reset {
   padding: 0;
 }

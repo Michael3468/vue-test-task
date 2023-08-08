@@ -7,7 +7,7 @@
   --color-fifth: #424343;
   --color-sixth: #63636F;
 
-  /* TODO: rename colors */
+  /* TODO: remove colors */
   --color-background: var(--color-third);
   --color-background-second: var(--color-fifth);
   --color-background-third: var(--color-main);

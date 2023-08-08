@@ -1,22 +1,11 @@
 <script setup lang="ts">
-import { ref } from 'vue';
 import { RouterLink } from 'vue-router';
-
-const navbarLinks = ref<HTMLElement | null>(null);
-
-const toggleLinks = () => navbarLinks.value?.classList.toggle('navbar-links_visible');
 </script>
 
 <template>
   <nav class="navbar">
-    <img
-      src="@/assets/img/burger.svg"
-      alt="burger"
-      @click="toggleLinks"
-    >
-
     <!-- TODO: v-for -->
-    <ul class="navbar-links" ref="navbarLinks">
+    <ul class="navbar-links">
       <li class="navbar-link"><RouterLink to="/">Расчет стоимости</RouterLink></li>
       <li class="navbar-link"><RouterLink to="/about">О нас</RouterLink></li>
       <li class="navbar-link"><RouterLink to="/registration">Выездная регистрация</RouterLink></li>
@@ -33,19 +22,37 @@ const toggleLinks = () => navbarLinks.value?.classList.toggle('navbar-links_visi
 .navbar {
   display: flex;
   flex-direction: column;
-  width: 24px;
-  height: 24px;
+  width: 100%;
   cursor: pointer;
 }
 
 .navbar-links {
-  display: none;
+  max-width: 320px;
+  position: relative;
   background: var(--color-background);
   width: 80vw;
-  max-width: 320px;
   box-shadow: 0px 0px 10px black;
   padding: 20px;
   top: 30px;
+}
+
+@media screen and (min-width: 960px) {
+  .navbar-links {
+    display: flex;
+    max-width: none;
+    justify-content: space-between;
+    position: static;
+    box-shadow: none;
+    background: none;
+    padding: 0;
+    min-width: 100%;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .navbar-links {
+    padding: 0 120px;
+  }
 }
 
 .navbar-links_visible {
@@ -56,18 +63,36 @@ const toggleLinks = () => navbarLinks.value?.classList.toggle('navbar-links_visi
 
 .navbar-link {
   list-style-type: none;
-}
-
-.navbar-link > a {
-  display: block;
-  color: var(--font-color-main);
+  min-width: fit-content;
 }
 
 .navbar-link:hover {
   background: rgba(0, 0, 0, 0.1);
 }
 
+@media screen and (min-width: 960px) {
+  .navbar-link:hover {
+    background: var(--color-third)
+  }
+}
+
+.navbar-link > a {
+  display: block;
+  padding: 12px 16px 12px 16px;
+  color: #18191B;
+  font-family: var(--font-family-lato);
+  font-size: 16px;
+  line-height: 28px;
+}
+
+@media screen and (min-width: 960px) {
+  .navbar-link > a:hover {
+    color: var(--color-main);
+  }
+}
+
 a.router-link-active {
   color: var(--font-color-main-active-link);
+  border-bottom: 3px solid var(--color-main);
 }
 </style>

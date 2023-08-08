@@ -11,7 +11,7 @@ import HSFooter from './components/HSFooter.vue'
     <RouterView />
   </div>
 
-<HSFooter />
+  <HSFooter />
 </template>
 
 <style scoped>
