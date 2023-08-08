@@ -15,6 +15,7 @@ interface IAnswers {
 
 let startScreenRef = ref<HTMLElement | null>(null);
 let questionsRef = ref<HTMLElement | null>(null);
+let buttonSendIsDisabled = ref<boolean>(false);
 
 
 let currentQuestionNumber = ref<number>(0);
@@ -51,6 +52,14 @@ const questions:IQuestions[] = [
 
 let currentQuestion = computed(() => questions[currentQuestionNumber.value]);
 
+let buttonSendText = computed(() => {
+  if (buttonSendIsDisabled.value) {
+    return 'Отправлено';
+  }
+
+  return answers.value.length + 1 < questions.length ? 'Следующий вопрос' : 'Отправить';
+});
+
 const nextQuestion = (text: string, answer: string) => {
   if (currentQuestionNumber.value + 1 < questions.length) {
     currentQuestionNumber.value++;
@@ -62,6 +71,7 @@ const nextQuestion = (text: string, answer: string) => {
     if (answers.value.length === questions.length) {
       // send answers
       console.log(answers.value);
+      buttonSendIsDisabled.value = true;
     }
   }
 }
@@ -156,7 +166,8 @@ const questionsWord = computed(() => {
         </div>
 
         <HSButtonArrow
-          :text="answers.length + 1 < questions.length ? 'Следующий вопрос' : 'Отправить'"
+          :text="buttonSendText"
+          :isDisabled="buttonSendIsDisabled"
           @click.prevent="nextQuestion(
             currentQuestion.text,
             currentQuestion.answers[chosenAnswer]
