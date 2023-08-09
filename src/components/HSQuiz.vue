@@ -106,75 +106,90 @@ const questionsWord = computed(() => {
     <h2 class="quiz-caption">Рассчитайте стоимость вашего банкета</h2>
 
     <div class="quiz-text-mobile">
-      <HSQuizText :questionsCount="questions.length" :questionsWord="questionsWord"/>
+      <HSQuizText :questionsCount="questions.length" :questionsWord="questionsWord" />
     </div>
   </div>
 
-  <div class="container.container-paddings-reset">
-    <!-- start screen -->
-    <div ref="startScreenRef" class="quiz-start-screen">
-      <img
-        src="../assets/img/quiz-start-bottle.png"
-        alt="бутылка шампанского с вылетающей пробкой"
-        class="quiz-start-screen-bottle"
-      >
+  <div class="container container-paddings-reset">
+    <div class="quiz-items">
+      <!-- quiz questions -->
+      <div ref="questionsRef" class="quiz-questions quiz-questions_visible">
+        <div class="quiz-questions-container-top">
+          <p class="quiz-questions__questions">
+            Вопрос {{ currentQuestionNumber + 1 }} из {{ questions.length }}
+          </p>
   
-      <div class="quiz-start-screen-button">
-        <HSButtonArrow text="Начать" @click="handleStartClick"></HSButtonArrow>
-      </div>
-    </div>
-
-    <!-- quiz questions -->
-    <div ref="questionsRef" class="quiz-questions quiz-questions_visible">
-      <p class="quiz-questions__questions">
-        Вопрос {{ currentQuestionNumber + 1 }} из {{ questions.length }}
-      </p>
-
-      <div class="quiz-questions__progress-bar">
-        <div
-          class="quiz-questions__progress-bar-inner"
-          :style="`width: ${(100/questions.length) * (currentQuestionNumber + 1)}%`"
-        ></div>
-      </div>
-
-      <form class="quiz-questions__answers-form">
-        <p class="quiz-questions__question-text">{{ currentQuestion.text }}</p>
-
-        <div class="quiz-questions__answers">
-          <div
-            v-for="(answer, index) in currentQuestion.answers"
-            :key="answer"
-            class="quiz-questions__answer"
-            :class="{ active : chosenAnswer === index}"
-          >
-            <input
-              class="quiz-questions__input"
-              :id="`${currentQuestion.name}-${answer}`"
-              type="radio"
-              :name="currentQuestion.name"
-              :value="answer"
-              @click="handleInputClick(index)"
-              :checked="chosenAnswer === index"
-            />
-            <label
-              class="quiz-questions__label"
-              :class="{ active : chosenAnswer === index}"
-              :for="`${currentQuestion.name}-${answer}`"
-            >
-              {{ answer }}
-            </label>
+          <div class="quiz-questions__progress-bar">
+            <div
+              class="quiz-questions__progress-bar-inner"
+              :style="`width: ${(100/questions.length) * (currentQuestionNumber + 1)}%`"
+            ></div>
           </div>
+  
+          <form class="quiz-questions__answers-form">
+            <p class="quiz-questions__question-text">{{ currentQuestion.text }}</p>
+  
+            <div class="quiz-questions__answers">
+              <div
+                v-for="(answer, index) in currentQuestion.answers"
+                :key="answer"
+                class="quiz-questions__answer"
+                :class="{ active : chosenAnswer === index}"
+              >
+                <input
+                  class="quiz-questions__input"
+                  :id="`${currentQuestion.name}-${answer}`"
+                  type="radio"
+                  :name="currentQuestion.name"
+                  :value="answer"
+                  @click="handleInputClick(index)"
+                  :checked="chosenAnswer === index"
+                />
+                <label
+                  class="quiz-questions__label"
+                  :class="{ active : chosenAnswer === index}"
+                  :for="`${currentQuestion.name}-${answer}`"
+                >
+                  {{ answer }}
+                </label>
+              </div>
+            </div>
+          </form>
         </div>
 
-        <HSButtonArrow
-          :text="buttonSendText"
-          :isDisabled="buttonSendIsDisabled"
-          @click.prevent="nextQuestion(
-            currentQuestion.text,
-            currentQuestion.answers[chosenAnswer]
-          )"
-        />
-      </form>
+        <div class="quiz-questions-container-bottom">
+          <HSButtonArrow
+            :text="buttonSendText"
+            :isDisabled="buttonSendIsDisabled"
+            @click.prevent="nextQuestion(
+              currentQuestion.text,
+              currentQuestion.answers[chosenAnswer]
+            )"
+          />
+        </div>
+      </div>
+  
+      <!-- start screen -->
+      <div ref="startScreenRef" class="quiz-start-screen">
+        <img
+          class="quiz-start-screen-bottle"
+          src="/src/assets/img/quiz-start-bottle.png"
+          alt="бутылка шампанского с вылетающей пробкой"
+        >
+        <img
+          class="quiz-start-screen-bottle-big"
+          src="/src/assets/img/quiz-start-bottle-big.png"
+          alt="бутылка шампанского с вылетающей пробкой"
+        >
+
+        <div class="quiz-start-screen-button">
+          <HSButtonArrow text="Начать" @click="handleStartClick"></HSButtonArrow>
+        </div>
+
+        <div class="quiz-start-screen-text">
+          <HSQuizText :questionsCount="questions.length" :questionsWord="questionsWord" size="big"/>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -188,9 +203,11 @@ const questionsWord = computed(() => {
 
 @media screen and (min-width: 960px) {
   .quiz-caption {
-    margin-top: 27px;
+    margin-top: 16px;
+    margin-bottom: 19px;
     /* TODO: wv */
     font-size: 40px;
+    line-height: 48px;
   }
 }
 
@@ -204,11 +221,18 @@ const questionsWord = computed(() => {
   }
 }
 
+.quiz-items {
+  display: flex;
+  gap: 19px;
+}
+
 /* start screen */
 .quiz-start-screen {
   position: relative;
-  background-image: url('../assets/img/quiz-start-background.png');
-  width: 360px;
+  background: url('/src/assets/img/quiz-start-background.png') no-repeat right top;
+  background-color: var(--color-second);
+
+  min-width: 360px;
   height: 280px;
   border-radius: var(--border-radius-big);
   margin-left: auto;
@@ -216,15 +240,47 @@ const questionsWord = computed(() => {
   margin-top: 23px;
 }
 
+@media screen and (min-width: 960px) {
+  .quiz-start-screen {
+    background: url('/src/assets/img/quiz-start-background-big.png') no-repeat right top;
+    background-color: var(--color-second);
+    width: 100%;
+    max-width: 650px;
+    height: 369px;
+    margin-top: 0;
+  }
+}
+
 .quiz-start-screen.quiz-start-screen_visible {
   display: none;
 }
 
 .quiz-start-screen-bottle {
+  display: block;
   position: absolute;
   right: 0;
   bottom: 0;
   border-radius: inherit;
+}
+
+@media screen and (min-width: 960px) {
+  .quiz-start-screen-bottle {
+    display: none;
+  }
+}
+
+.quiz-start-screen-bottle-big {
+  display: none;
+}
+
+@media screen and (min-width: 960px) {
+  .quiz-start-screen-bottle-big {
+    display: block;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    border-radius: inherit;
+  }
 }
 
 .quiz-start-screen-button {
@@ -233,15 +289,76 @@ const questionsWord = computed(() => {
   left: 16px
 }
 
+@media screen and (min-width: 960px) {
+  .quiz-start-screen-button {
+    display: none;
+  }
+}
+
+.quiz-start-screen-text {
+  display: none;
+}
+
+@media screen and (min-width: 960px) {
+  .quiz-start-screen-text {
+    display: block;
+    position: absolute;
+    bottom: 29px;
+    left: 15px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .quiz-start-screen-text {
+    left: 41px;
+  }
+}
+
 /* questions */
 .quiz-questions {
   background-color: var(--color-second);
-  padding: 28px 16px;
   border-radius: var(--border-radius-big);
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media screen and (min-width: 960px) {
+  .quiz-questions {
+    min-width: 57.8%;
+  }
 }
 
 .quiz-questions.quiz-questions_visible {
   display: none;
+}
+
+@media screen and (min-width: 960px) {
+  .quiz-questions.quiz-questions_visible {
+    display: block;
+  }
+}
+
+.quiz-questions-container-top {
+  padding: 28px 16px 21px 16px;
+  border-bottom: 1px solid #E9EAEC;
+  box-shadow: 0px 1px 0px 0px var(--color-third);
+}
+
+@media screen and (min-width: 960px) {
+  .quiz-questions-container-top {
+    padding: 38px 42px 40px 42px;
+  }
+}
+
+.quiz-questions-container-bottom {
+  padding: 25px 16px 33px 16px;
+}
+
+@media screen and (min-width: 960px) {
+  .quiz-questions-container-bottom {
+    padding: 31px 42px 32px 42px;
+  }
 }
 
 .quiz-questions__questions {
@@ -252,11 +369,24 @@ const questionsWord = computed(() => {
   margin-bottom: 15px;
 }
 
+@media screen and (min-width: 960px) {
+  .quiz-questions__questions {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+}
+
 .quiz-questions__progress-bar {
   width: 100%;
   height: 4px;
   background-color: var(--color-background);
   margin-bottom: 26px;
+}
+
+@media screen and (min-width: 960px) {
+  .quiz-questions__progress-bar {
+    margin-bottom: 37px;
+  }
 }
 
 .quiz-questions__progress-bar-inner {
@@ -272,11 +402,24 @@ const questionsWord = computed(() => {
   margin-bottom: 14px;
 }
 
+@media screen and (min-width: 960px) {
+  .quiz-questions__question-text {
+    font-size: 24px;
+    margin-bottom: 22px;
+  }
+}
+
+
 .quiz-questions__answers {
   display: flex;
   flex-wrap: wrap;
   gap: 16px 8px;
-  margin-bottom: 47px;
+}
+
+@media screen and (min-width: 960px) {
+  .quiz-questions__answers {
+    gap: 16px 19px;
+  }
 }
 
 .quiz-questions__answer {
@@ -285,6 +428,12 @@ const questionsWord = computed(() => {
   border-radius: 4px;
   border: 1px solid var(--color-background);
   background-color: var(--color-background);
+}
+
+@media screen and (min-width: 960px) {
+  .quiz-questions__answer {
+    padding: 12px 29px 13px 12px;
+  }
 }
 
 .quiz-questions__answer.active {
@@ -302,6 +451,13 @@ const questionsWord = computed(() => {
   font-family: var(--font-family-lato);
   font-size: 14px;
   margin-left: 13px;
+}
+
+@media screen and (min-width: 960px) {
+  .quiz-questions__label {
+    font-size: 17px;
+    margin-left: 22px;
+  }
 }
 
 .quiz-questions__label.active {
