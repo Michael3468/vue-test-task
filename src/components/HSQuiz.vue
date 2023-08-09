@@ -203,11 +203,8 @@ const questionsWord = computed(() => {
 
 @media screen and (min-width: 960px) {
   .quiz-caption {
-    margin-top: 16px;
-    margin-bottom: 19px;
-    /* TODO: wv */
-    font-size: 40px;
-    line-height: 48px;
+    margin-top: 28px;
+    margin-bottom: 28px;
   }
 }
 
@@ -303,7 +300,7 @@ const questionsWord = computed(() => {
   .quiz-start-screen-text {
     display: block;
     position: absolute;
-    bottom: 29px;
+    bottom: 30px;
     left: 15px;
   }
 }

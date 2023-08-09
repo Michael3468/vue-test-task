@@ -82,6 +82,14 @@ a {
 
 h2 {
   font-family: var(--font-family-p052);
+    /* TODO: wv */
   font-size: 20px;
   letter-spacing: 0.1px;
+}
+
+@media screen and (min-width: 960px) {
+  h2 {
+    font-size: 40px;
+    line-height: 48px;
+  }
 }

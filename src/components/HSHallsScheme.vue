@@ -9,7 +9,10 @@ const tabs = [
   {
     id: 1,
     caption: 'Зал Первый',
-    content: `<img src="src/assets/img/hall-1.svg" alt="зал 1">`,
+    content: {
+      small: `<img src="src/assets/img/hall-1.svg" alt="зал 1">`,
+      big: `<img class="halls-scheme__tab-content-image-big" src="src/assets/img/hall-1-big.svg" alt="зал 1">`,
+    },
     infoCaption: 'Просторный зал с панорамным видом на город',
     info: [
       {
@@ -29,7 +32,10 @@ const tabs = [
   {
     id: 2,
     caption: 'Зал Второй',
-    content: `<img src="src/assets/img/hall-2.svg" alt="зал 2">`,
+    content: {
+      small: `<img src="src/assets/img/hall-2.svg" alt="зал 2">`,
+      big: `<img class="halls-scheme__tab-content-image-big" src="src/assets/img/hall-2-big.svg" alt="зал 2">`,
+    },
     infoCaption: 'Просторный зал с панорамным видом на море',
     info: [
       {
@@ -59,59 +65,66 @@ const selectTab = (tabId: number) => {
 
 <template>
 <div class="halls-scheme">
-  <h2 class="halls-scheme__caption">Схемы залов</h2>
+  <div class="container">
+    <h2 class="halls-scheme__caption">Схемы залов</h2>
 
-  <!-- tabs -->
-  <div class="halls-scheme__tabs">
-    <div
-      v-for="tab in tabs"
-      :key="tab.id"
-      class="halls-scheme__tab"
-      :class="{ 'halls-scheme__tab_active': tab.id === activeTab }"
-      @click="selectTab(tab.id)"
-    >
-      {{ tab.caption }}
-    </div>
-  </div>
-
-  <!-- tabs content -->
-  <div class="halls-scheme__contents">
-    <!-- tab image -->
-    <div
-      v-for="tab in filteredTabs"
-      :key="tab.id" class="halls-scheme__tab-content"
-      :class="{ 'halls-scheme__tab-content_active': tab.id === activeTab }"
-    >
-      <div v-html="tab.content" class="halls-scheme__tab-content-image"></div>
-    </div>
-
-    <div class="container">
-      <div class="halls-scheme-tab-content-info">
-        <h2 class="halls-scheme-tab-content-info__caption">
-          {{ filteredTabs[0].infoCaption }}
-        </h2>
-
-        <!-- tab info -->
-        <div class="halls-scheme-info">
-          <div
-            v-for="item in filteredTabs[0]?.info"
-            :key="item.key"
-            class="halls-scheme-info__row"
-          >
-            <div class="halls-scheme-info__key">{{ item.key }}</div>
-            <div class="halls-scheme-info__value">{{ item.value }}</div>
-          </div>
-        </div>
-
-        <div class="halls-scheme-tab-content-button">
-          <HSButtonOutlined text="Забронировать" :isOutlined=false />
-        </div>
-        <HSButtonOutlined text="Посмотреть галерею"/>
-
+    <!-- tabs -->
+    <div class="halls-scheme__tabs">
+      <div
+        v-for="tab in tabs"
+        :key="tab.id"
+        class="halls-scheme__tab"
+        :class="{ 'halls-scheme__tab_active': tab.id === activeTab }"
+        @click="selectTab(tab.id)"
+      >
+        <p class="halls-scheme__tab-text">{{ tab.caption }}</p>
       </div>
     </div>
 
+    <!-- tabs content -->
+    <div class="halls-scheme__contents">
+      <!-- tab image -->
+      <div
+        v-for="tab in filteredTabs"
+        :key="tab.id" class="halls-scheme__tab-content"
+        :class="{ 'halls-scheme__tab-content_active': tab.id === activeTab }"
+      >
+        <div v-html="tab.content.small" class="halls-scheme__tab-content-image"></div>
+        <div v-html="tab.content.big" class="halls-scheme__tab-content-image-big"></div>
+      </div>
+  
+      <div class="container">
+        <div class="halls-scheme-tab-content-info">
+          <h2 class="halls-scheme-tab-content-info__caption">
+            {{ filteredTabs[0].infoCaption }}
+          </h2>
+  
+          <!-- tab info -->
+          <div class="halls-scheme-info">
+            <div
+              v-for="item in filteredTabs[0]?.info"
+              :key="item.key"
+              class="halls-scheme-info__row"
+            >
+              <div class="halls-scheme-info__key">{{ item.key }}</div>
+              <div class="halls-scheme-info__value">{{ item.value }}</div>
+            </div>
+          </div>
+  
+          <div class="halls-scheme-tab-content-buttons">
+            <div class="halls-scheme-tab-content-button">
+              <HSButtonOutlined text="Забронировать" :isOutlined=false />
+            </div>
+            <HSButtonOutlined text="Посмотреть галерею"/>
+          </div>
+  
+        </div>
+      </div>
+  
+    </div>
   </div>
+
+
 
 </div>
 </template>
@@ -129,11 +142,25 @@ const selectTab = (tabId: number) => {
   margin-bottom: 17px;
 }
 
+@media screen and (min-width: 960px) {
+  .halls-scheme__caption {
+    display: flex;
+    margin-top: 25px;
+    margin-bottom: 23px;
+  }
+}
+
 .halls-scheme__tabs {
   display: flex;
   flex-direction: row;
   justify-content: center;
   gap: 2px;
+}
+
+@media screen and (min-width: 960px) {
+  .halls-scheme__tabs {
+    justify-content: start;
+  }
 }
 
 .halls-scheme__tab {
@@ -153,13 +180,35 @@ const selectTab = (tabId: number) => {
   cursor: pointer;
 }
 
+@media screen and (min-width: 960px) {
+  .halls-scheme__tab {
+    padding: 14px 33px;
+  }
+}
+
 .halls-scheme__tab_active {
   background: var(--tab-content);
+}
+
+@media screen and (min-width: 960px) {
+  .halls-scheme__tab-text {
+    letter-spacing: 0.4px;
+  }
 }
 
 .halls-scheme__contents {
   border-radius: var(--border-radius-big);
   background: var(--tab-content);
+}
+
+@media screen and (min-width: 960px) {
+  .halls-scheme__contents {
+    display: flex;
+    padding-bottom: 7px;
+    margin-bottom: 9px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
 }
 
 .halls-scheme__tab-content {
@@ -173,9 +222,40 @@ const selectTab = (tabId: number) => {
 }
 
 .halls-scheme__tab-content-image {
+  display: block;
   width: 100%;
   height: 100%;
   padding: 15px 0 10px 0;
+}
+
+@media screen and (min-width: 960px) {
+  .halls-scheme__tab-content-image {
+    display: none;
+  }
+}
+
+.halls-scheme__tab-content-image-big {
+  display: none;
+  width: 100%;
+  height: 100%;
+  padding: 15px 0 10px 0;
+}
+
+@media screen and (min-width: 960px) {
+  .halls-scheme__tab-content-image-big {
+    display: block;
+    width: 291px;
+    height: 485px;
+    padding-top: 6px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .halls-scheme__tab-content-image-big {
+    transform: translateX(-16px);
+  }
 }
 
 /* info */
@@ -187,10 +267,34 @@ const selectTab = (tabId: number) => {
   padding: 19px 16px 24px 16px;
 }
 
+@media screen and (min-width: 960px) {
+  .halls-scheme-tab-content-info {
+    max-width: 536px;
+    margin: 55px 20px 30px 20px;
+    padding: 33px 10px 33px 37px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .halls-scheme-tab-content-info {
+    max-width: 536px;
+    margin: 55px 20px 30px 10.6vw;
+    padding: 33px 10px 33px 37px;
+  }
+}
+
 .halls-scheme-tab-content-info__caption {
   display: flex;
   text-align: left;
   line-height: 30px;
+}
+
+@media screen and (min-width: 960px) {
+  .halls-scheme-tab-content-info__caption {
+    font-size: 32px;
+    line-height: 32px;
+    margin-bottom: 25px;
+  }
 }
 
 /* table */
@@ -202,11 +306,24 @@ const selectTab = (tabId: number) => {
   margin-top: 10px;
 }
 
+@media screen and (min-width: 960px) {
+  .halls-scheme-info {
+    margin-bottom: 9px;
+  }
+}
+
 .halls-scheme-info__row {
   display: flex;
   padding-top: 9px;
   padding-bottom: 7px;
   border-bottom: 2px solid #E9EAEC;
+}
+
+@media screen and (min-width: 960px) {
+  .halls-scheme-info__row {
+    padding-top: 13px;
+    padding-bottom: 2px;
+  }
 }
 
 .halls-scheme-info__key {
@@ -220,6 +337,13 @@ const selectTab = (tabId: number) => {
   width: 140px;
 }
 
+@media screen and (min-width: 960px) {
+  .halls-scheme-info__key {
+    font-size: 17px;
+    width: 72px;
+  }
+}
+
 .halls-scheme-info__value {
   display: flex;
   flex-grow: 1;
@@ -230,6 +354,28 @@ const selectTab = (tabId: number) => {
   font-size: 14px;
   line-height: 20px; 
 }
+
+@media screen and (min-width: 960px) {
+  .halls-scheme-info__value {
+    font-size: 16px;
+    line-height: 28px;
+    transform: translateY(-4px);
+  }
+}
+
+.halls-scheme-tab-content-buttons {
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen and (min-width: 960px) {
+  .halls-scheme-tab-content-buttons {
+    flex-direction: row;
+    align-items: center;
+    gap: 0 15px;
+  }
+}
+
 
 .halls-scheme-tab-content-button {
   margin-top: 14px;

@@ -42,8 +42,24 @@ const props = withDefaults(defineProps<Props>(), {
   font-weight: 400;
 }
 
+@media screen and (min-width: 960px) {
+  .button-outlined {
+    width: 213px;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 14px 30px;
+  }
+}
+
 .button-outlined.button-filled {
   background-color: var(--color-main);
   color: var(--font-color-second);
 }
+
+@media screen and (min-width: 960px) {
+  .button-outlined.button-filled {
+    width: 176px;
+  }
+}
+
 </style>
