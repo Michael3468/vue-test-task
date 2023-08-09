@@ -41,7 +41,7 @@ import HSFooter from './components/HSFooter.vue'
 
 @media screen and (min-width: 960px) {
   .content {
-    min-height: calc(100vh - 496px);
+    min-height: calc(100vh - var(--footer-height-min));
   }
 }
 </style>

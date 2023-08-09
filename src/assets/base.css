@@ -32,7 +32,11 @@
   --border-radius-small: 4px;
   --border-radius-big: 16px;
 
+  --footer-height-min: 368px;
   --footer-height: 431px;
+  --footer-padding: 36px;
+
+  --layout-content-max-width: 1588px;
 }
 
 *,
@@ -84,11 +88,13 @@ h2 {
   font-family: var(--font-family-p052);
     /* TODO: wv */
   font-size: 20px;
+  /* TODO: remove letter-spacing pp */
   letter-spacing: 0.1px;
 }
 
 @media screen and (min-width: 960px) {
   h2 {
+    /* TODO: wv */
     font-size: 40px;
     line-height: 48px;
   }
