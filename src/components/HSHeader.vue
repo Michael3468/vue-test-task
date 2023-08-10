@@ -4,6 +4,9 @@ import HSBurger from './HSBurger.vue';
 import HSButtonCall from './HSButtonCall.vue';
 import HSButtonSocial from './HSButtonSocial.vue';
 import HSNavBar from './HSNavBar.vue';
+
+import toggleModal from './HSModal/toggleModal';
+import { constants } from '@/assets/js/constants';
 </script>
 
 <template>
@@ -42,7 +45,12 @@ import HSNavBar from './HSNavBar.vue';
     
             <div class="header-phone">
               <p class="header-phone__number">+7 (123) 45-67-89</p>
-              <p class="header-phone__button">Перезвоните мне</p>
+              <p
+                class="header-phone__button"
+                @click="toggleModal('.js-modal', `${constants.modalToggleClass}`)"
+              >
+                Перезвоните мне
+              </p>
             </div>
           </div>
         </div>
@@ -176,5 +184,6 @@ header {
   font-family: var(--font-family-roboto);
   font-size: 15px;
   text-decoration-line: underline;
+  cursor: pointer;
 }
 </style>

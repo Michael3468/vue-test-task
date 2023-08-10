@@ -24,6 +24,7 @@
   --tab-background-active: var(--color-second);
   --tab-content: var(--color-second);
 
+  /* TODO: rename fonts main/second */
   --font-family-roboto: 'Roboto', sans-serif;
   --font-family-p052: 'P052', sans-serif;
   --font-family-lato: 'Lato', sans-serif;

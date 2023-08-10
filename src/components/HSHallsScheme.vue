@@ -2,6 +2,9 @@
 import { ref } from 'vue';
 import HSButtonOutlined from './HSButtonOutlined.vue';
 
+import toggleModal from './HSModal/toggleModal';
+import { constants } from '@/assets/js/constants';
+
 let activeTab = ref(1);
 
 // TODO: move to json file
@@ -113,7 +116,9 @@ const selectTab = (tabId: number) => {
   
           <div class="halls-scheme-tab-content-buttons">
             <div class="halls-scheme-tab-content-button">
-              <HSButtonOutlined text="Забронировать" :isOutlined=false />
+              <HSButtonOutlined
+                text="Забронировать"
+                :isOutlined=false @click="toggleModal('.js-modal', `${constants.modalToggleClass}`)"/>
             </div>
             <HSButtonOutlined text="Посмотреть галерею"/>
           </div>

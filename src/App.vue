@@ -2,10 +2,13 @@
 import { RouterView } from 'vue-router'
 import HSHeader from './components/HSHeader.vue'
 import HSFooter from './components/HSFooter.vue'
+import HSModal from './components/HSModal/HSModal.vue';
 </script>
 
 <template>
   <HSHeader />
+
+  <HSModal />
 
   <div class="content">
     <RouterView />
