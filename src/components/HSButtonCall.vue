@@ -21,7 +21,7 @@ import toggleModal from './HSModal/toggleModal';
   border-radius: var(--border-radius-small);
   color: white;
 
-  font-family: var(--font-family-roboto);
+  font-family: var(--font-family-second);
   font-size: 15px;
   font-style: normal;
   font-weight: 400;

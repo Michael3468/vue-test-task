@@ -7,7 +7,6 @@
   --color-fifth: #424343;
   --color-sixth: #63636F;
 
-  /* TODO: remove colors */
   --color-background: var(--color-third);
   --color-background-second: var(--color-fifth);
   --color-background-third: var(--color-main);
@@ -24,11 +23,9 @@
   --tab-background-active: var(--color-second);
   --tab-content: var(--color-second);
 
-  /* TODO: rename fonts main/second */
-  --font-family-roboto: 'Roboto', sans-serif;
-  --font-family-p052: 'P052', sans-serif;
-  --font-family-lato: 'Lato', sans-serif;
-
+  --font-family-main: 'Lato', sans-serif;
+  --font-family-second: 'Roboto', sans-serif;
+  --font-family-third: 'P052', sans-serif;
 
   --border-radius-small: 4px;
   --border-radius-big: 16px;
@@ -86,7 +83,7 @@ a {
 }
 
 h2 {
-  font-family: var(--font-family-p052);
+  font-family: var(--font-family-third);
     /* TODO: wv */
   font-size: 20px;
   /* TODO: remove letter-spacing pp */

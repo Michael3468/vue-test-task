@@ -20,7 +20,7 @@ const props = withDefaults(defineProps<Props>(), {
 <style>
 .quiz-text {
   margin-top: 9px;
-  font-family: var(--font-family-lato);
+  font-family: var(--font-family-main);
   font-size: 14px;
   line-height: 20px;
 }

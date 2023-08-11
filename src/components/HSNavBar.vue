@@ -80,7 +80,7 @@ import { RouterLink } from 'vue-router';
   display: block;
   padding: 12px 16px 12px 16px;
   color: #18191B;
-  font-family: var(--font-family-lato);
+  font-family: var(--font-family-main);
   font-size: 16px;
   line-height: 28px;
 }

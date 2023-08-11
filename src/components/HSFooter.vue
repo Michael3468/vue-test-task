@@ -86,7 +86,7 @@ footer {
 
 .footer-socials__text {
   color: var(--font-color-second);
-  font-family: var(--font-family-lato);
+  font-family: var(--font-family-main);
   font-size: 20px;
 }
 
@@ -105,7 +105,7 @@ footer {
 
 .footer-copyright {
   display: inline-block;
-  font-family: var(--font-family-lato);
+  font-family: var(--font-family-main);
   font-size: 14px;
   color: var(--font-color-second);
   margin-bottom: 17px;

@@ -177,7 +177,7 @@ const selectTab = (tabId: number) => {
   border-radius: var(--border-radius-big) var(--border-radius-big) 0px 0px;
   background: var(--tab-background);
 
-  font-family: var(--font-family-roboto);
+  font-family: var(--font-family-second);
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
@@ -335,8 +335,7 @@ const selectTab = (tabId: number) => {
   display: flex;
   flex-grow: 1;
   color: var(--font-color-third);
-  /* TODO: rename to --font-family-main/second/third */
-  font-family: var(--font-family-lato);
+  font-family: var(--font-family-main);
   font-size: 14px;
   line-height: 20px;
   width: 140px;
@@ -354,7 +353,7 @@ const selectTab = (tabId: number) => {
   flex-grow: 1;
   width: 155px;
   color: var(--ver-201, #18191B);
-  font-family: var(--font-family-lato);
+  font-family: var(--font-family-main);
   /* TODO font-size 14px to base.css */
   font-size: 14px;
   line-height: 20px; 

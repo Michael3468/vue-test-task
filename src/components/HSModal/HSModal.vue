@@ -163,7 +163,7 @@ const bookHall = () => {
 
 .modal-caption {
   color: var(--color-main);
-  font-family: var(--font-family-p052);
+  font-family: var(--font-family-third);
   font-size: 32px;
   font-weight: 700;
   line-height: 32px;
@@ -172,7 +172,7 @@ const bookHall = () => {
 
 .modal-caption-text {
   color: var(--color-fourth);
-  font-family: var(--font-family-lato);
+  font-family: var(--font-family-main);
   font-size: 16px;
   line-height: 28px;
 }
@@ -205,7 +205,7 @@ const bookHall = () => {
   display: flex;
   flex-direction: column;
   color: var(--color-fourth);
-  font-family: var(--font-family-roboto);
+  font-family: var(--font-family-second);
   font-size: 12px;
   font-style: normal;
   font-weight: 400;
@@ -218,7 +218,7 @@ const bookHall = () => {
   border: none;
   border-radius: var(--border-radius-small);
 
-  font-family: var(--font-family-roboto);
+  font-family: var(--font-family-second);
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
@@ -255,7 +255,7 @@ const bookHall = () => {
   display: block;
   color: var(--color-fourth);
 
-  font-family: var(--font-family-roboto);
+  font-family: var(--font-family-second);
   font-size: 12px;
   font-style: normal;
   font-weight: 400;

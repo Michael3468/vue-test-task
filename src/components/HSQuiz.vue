@@ -360,7 +360,7 @@ const questionsWord = computed(() => {
 
 .quiz-questions__questions {
   color: var(--font-color-sixth);
-  font-family: var(--font-family-lato);
+  font-family: var(--font-family-main);
   font-size: 14px;
   line-height: 20px;
   margin-bottom: 15px;
@@ -393,7 +393,7 @@ const questionsWord = computed(() => {
 
 .quiz-questions__question-text {
   color: var(--font-color-sixth);
-  font-family: var(--font-family-lato);
+  font-family: var(--font-family-main);
   font-size: 16px;
   line-height: 28px;
   margin-bottom: 14px;
@@ -445,7 +445,7 @@ const questionsWord = computed(() => {
 
 .quiz-questions__label {
   color: var(--font-color-seven);
-  font-family: var(--font-family-lato);
+  font-family: var(--font-family-main);
   font-size: 14px;
   margin-left: 13px;
 }

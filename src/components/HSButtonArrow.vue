@@ -22,7 +22,7 @@ const props = withDefaults(defineProps<Props>(), {
   display: flex;
   align-items: center;
   background-color: var(--color-main);
-  font-family: var(--font-family-roboto);
+  font-family: var(--font-family-second);
   
   padding: 14px 24px 14px 31px;
   border-radius: var(--border-radius-small);

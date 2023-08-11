@@ -151,7 +151,7 @@ header {
 
 .header-address-text {
   color: var(--font-color-sixth);
-  font-family: var(--font-family-lato);
+  font-family: var(--font-family-main);
   font-size: 20px;
   line-height: 24px;
   margin-left: 18px;
@@ -172,7 +172,7 @@ header {
 
 .header-phone__number {
   color: var(--font-color-sixth);
-  font-family: var(--font-family-lato);
+  font-family: var(--font-family-main);
   font-size: 20px;
   line-height: 27px;
 }
@@ -181,7 +181,7 @@ header {
   display: flex;
   justify-content: end;
   color: var(--font-color-fourth);
-  font-family: var(--font-family-roboto);
+  font-family: var(--font-family-second);
   font-size: 15px;
   text-decoration-line: underline;
   cursor: pointer;

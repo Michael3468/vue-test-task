@@ -36,7 +36,7 @@ const props = withDefaults(defineProps<Props>(), {
   background-color: var(--color-third);
 
   color: var(--font-color-fourth);
-  font-family: var(--font-family-roboto);
+  font-family: var(--font-family-second);
   font-size: 15px;
   font-style: normal;
   font-weight: 400;
