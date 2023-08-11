@@ -44,8 +44,10 @@ footer {
   margin-right: auto;
 }
 
-/* --footer-padding: 36px;
---layout-content-max-width: 1588px; */
+/* 
+--footer-padding: 36px;
+--layout-content-max-width: 1588px;
+*/
 @media screen and (min-width: calc(1588px + 36px + 36px)) {
   .footer-container {
     padding: 0;
