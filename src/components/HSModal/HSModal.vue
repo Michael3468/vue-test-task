@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, onBeforeUnmount } from 'vue';
 
 import inputMaskPhone from './inputMaskPhone';
 import toggleModal from './toggleModal';
@@ -17,18 +17,20 @@ const modalWindowHeight = 250;
 const getModalWidth = () => {
   if (modalRef.value) {
     modalWidth.value = modalRef.value.offsetWidth;
-    console.log(modalRef.value.offsetHeight);
   }
 }
 
 const phoneInputClass = 'js-modal-input-phone';
 
 const getScreenCenterOnScroll = () => {
-  window.addEventListener('scroll', function() {
+  const handleScroll = () => {
     const screenCenter = Math.floor(window.scrollY + window.innerHeight / 2);
-
     modalTop.value = screenCenter;
-  });
+  }
+
+  window.addEventListener('scroll', handleScroll);
+
+  onBeforeUnmount(() => window.removeEventListener('scroll', handleScroll));
 }
 onMounted(() => {
   getModalWidth();
