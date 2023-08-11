@@ -13,7 +13,7 @@ const toggleLinks = () => {
   <div class="burger">
     <img
       class="burger-image"
-      src="@/assets/img/burger.svg"
+      src="/img/burger.svg"
       alt="burger"
       @click="toggleLinks"
     >

@@ -173,12 +173,12 @@ const questionsWord = computed(() => {
       <div ref="startScreenRef" class="quiz-start-screen">
         <img
           class="quiz-start-screen-bottle"
-          src="/src/assets/img/quiz-start-bottle.png"
+          src="/img/quiz-start-bottle.png"
           alt="бутылка шампанского с вылетающей пробкой"
         >
         <img
           class="quiz-start-screen-bottle-big"
-          src="/src/assets/img/quiz-start-bottle-big.png"
+          src="/img/quiz-start-bottle-big.png"
           alt="бутылка шампанского с вылетающей пробкой"
         >
 
@@ -226,7 +226,7 @@ const questionsWord = computed(() => {
 /* start screen */
 .quiz-start-screen {
   position: relative;
-  background: url('/src/assets/img/quiz-start-background.png') no-repeat right top;
+  background: url('/img/quiz-start-background.png') no-repeat right top;
   background-color: var(--color-second);
 
   min-width: 360px;
@@ -239,7 +239,7 @@ const questionsWord = computed(() => {
 
 @media screen and (min-width: 960px) {
   .quiz-start-screen {
-    background: url('/src/assets/img/quiz-start-background-big.png') no-repeat right top;
+    background: url('/img/quiz-start-background-big.png') no-repeat right top;
     background-color: var(--color-second);
     width: 100%;
     max-width: 650px;

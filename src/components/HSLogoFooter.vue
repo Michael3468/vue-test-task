@@ -1,5 +1,5 @@
 <template>
-  <img alt="footer logo" class="logo-footer" src="@/assets/img/logo-footer.svg" />
+  <img alt="footer logo" class="logo-footer" src="/img/logo-footer.svg" />
 </template>
 
 <style>

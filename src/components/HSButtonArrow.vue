@@ -13,7 +13,7 @@ const props = withDefaults(defineProps<Props>(), {
 <template>
 <button class="button-arrow" :disabled="isDisabled" :class="{ 'button-arrow_disabled' : isDisabled }">
   <span class="button-arrow__text">{{ text }}</span>
-  <img v-if="!isDisabled" src="../assets/img/button-arrow.svg" alt="стрелка">
+  <img v-if="!isDisabled" src="/img/button-arrow.svg" alt="стрелка">
 </button>
 </template>
 

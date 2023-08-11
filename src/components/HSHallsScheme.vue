@@ -29,8 +29,8 @@ const tabs: ITabs[] = [
     id: 1,
     caption: 'Зал Первый',
     content: {
-      small: `<img src="src/assets/img/hall-1.svg" alt="зал 1">`,
-      big: `<img class="halls-scheme__tab-content-image-big" src="src/assets/img/hall-1-big.svg" alt="зал 1">`,
+      small: `<img src="/img/hall-1.svg" alt="зал 1">`,
+      big: `<img class="halls-scheme__tab-content-image-big" src="/img/hall-1-big.svg" alt="зал 1">`,
     },
     infoCaption: 'Просторный зал с панорамным видом на город',
     info: [
@@ -52,8 +52,8 @@ const tabs: ITabs[] = [
     id: 2,
     caption: 'Зал Второй',
     content: {
-      small: `<img src="src/assets/img/hall-2.svg" alt="зал 2">`,
-      big: `<img class="halls-scheme__tab-content-image-big" src="src/assets/img/hall-2-big.svg" alt="зал 2">`,
+      small: `<img src="/img/hall-2.svg" alt="зал 2">`,
+      big: `<img class="halls-scheme__tab-content-image-big" src="/img/hall-2-big.svg" alt="зал 2">`,
     },
     infoCaption: 'Просторный зал с панорамным видом на море',
     info: [

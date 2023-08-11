@@ -17,7 +17,7 @@ const props = withDefaults(defineProps<Props>(), {
 <template>
 <button class="button-social" :class="{ 'button-social_small' : props.size === 'small' }">
   <a class="button-social-link" :href="link">
-    <img :src="`/src/assets/img/icon-${social}.svg`" :alt="social" class="button-social-image">
+    <img :src="`/img/icon-${social}.svg`" :alt="social" class="button-social-image">
   </a>
 </button>
 </template>

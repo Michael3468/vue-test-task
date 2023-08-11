@@ -32,7 +32,7 @@ import { constants } from '@/assets/js/constants';
             <div class="header-address">
               <img
                 class="header-address__image"
-                src="/src/assets/img/map-pin.svg"
+                src="/img/map-pin.svg"
                 alt="указатель точки на карте"
               >
               <p class="header-address-text">г. Ставрополь, <br /> ул. Пушкина 272</p>

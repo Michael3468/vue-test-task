@@ -55,7 +55,7 @@ const bookHall = () => {
 >
   <img
     class="modal-close-button"
-    src="/src/assets/img/modal-close-x.svg"
+    src="/img/modal-close-x.svg"
     alt="кнопка закрытия модального окна"
     @click="toggleModal('.js-modal', `${constants.modalToggleClass}`)"
   >

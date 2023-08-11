@@ -1,5 +1,5 @@
 <template>
-  <img alt="header logo" class="header-logo-img" src="@/assets/img/logo.svg" />
+  <img alt="header logo" class="header-logo-img" src="/img/logo.svg" />
 </template>
 
 <style>
