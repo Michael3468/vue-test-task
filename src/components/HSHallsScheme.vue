@@ -5,10 +5,26 @@ import HSButtonOutlined from './HSButtonOutlined.vue';
 import toggleModal from './HSModal/toggleModal';
 import { constants } from '@/assets/js/constants';
 
-let activeTab = ref(1);
+interface IInfo {
+  key: string;
+  value: string;
+}
+
+interface ITabs {
+  id: number;
+  caption: string;
+  content: {
+    small: string;
+    big: string;
+  },
+  infoCaption: string;
+  info: IInfo[];
+}
+
+let activeTab = ref<number>(1);
 
 // TODO: move to json file
-const tabs = [
+const tabs: ITabs[] = [
   {
     id: 1,
     caption: 'Зал Первый',
@@ -57,7 +73,7 @@ const tabs = [
   },
 ];
 
-let filteredTabs = ref(tabs);
+let filteredTabs = ref<ITabs[]>(tabs);
 
 const selectTab = (tabId: number) => {
   activeTab.value = tabId;
