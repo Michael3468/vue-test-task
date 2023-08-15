@@ -1,14 +1,10 @@
 <script setup lang="ts">
 import { constants } from '@/assets/js/constants';
 import toggleModal from './HSModal/toggleModal';
-
 </script>
 
 <template>
-  <button
-    class="call-button"
-    @click="toggleModal('.js-modal', `${constants.modalToggleClass}`)"
-  >
+  <button class="call-button" @click="toggleModal('.js-modal', `${constants.modalToggleClass}`)">
     Позвонить
   </button>
 </template>

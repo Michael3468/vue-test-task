@@ -7,14 +7,14 @@ interface Props {
 
 withDefaults(defineProps<Props>(), {
   size: 'small',
-})
+});
 </script>
 
 <template>
-<p class="quiz-text" :class="{ big : size === 'big' }">
-  Ответьте на {{ questionsCount }} {{ questionsWord }} и получите горку
-  <br /> из шампанского в подарок
-</p>
+  <p class="quiz-text" :class="{ big: size === 'big' }">
+    Ответьте на {{ questionsCount }} {{ questionsWord }} и получите горку <br />
+    из шампанского в подарок
+  </p>
 </template>
 
 <style>

@@ -9,11 +9,11 @@ import HSLogoFooter from './HSLogoFooter.vue';
       <div class="footer-items">
         <div class="footer-logo">
           <HSLogoFooter />
-          </div>
-  
+        </div>
+
         <div class="footer-socials">
           <p class="footer-socials__text">Мы в соц. сетях</p>
-      
+
           <div class="footer-socials__buttons">
             <HSButtonSocial social="facebook" size="big" />
             <HSButtonSocial social="whatsup" size="big" />
@@ -21,10 +21,9 @@ import HSLogoFooter from './HSLogoFooter.vue';
           </div>
         </div>
       </div>
-  
+
       <copyright class="footer-copyright">© Hotel Stavropol, 2020</copyright>
     </div>
-    
   </footer>
 </template>
 

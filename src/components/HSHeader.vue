@@ -18,31 +18,34 @@ import { constants } from '@/assets/js/constants';
             <div class="header-navbar">
               <HSBurger />
             </div>
-    
+
             <div class="header-logo">
               <HSLogo />
             </div>
           </div>
-  
+
           <div class="header-button-call">
             <HSButtonCall />
           </div>
-  
+
           <div class="header-info">
             <div class="header-address">
               <img
                 class="header-address__image"
                 src="/img/map-pin.svg"
                 alt="указатель точки на карте"
-              >
-              <p class="header-address-text">г. Ставрополь, <br /> ул. Пушкина 272</p>
+              />
+              <p class="header-address-text">
+                г. Ставрополь, <br />
+                ул. Пушкина 272
+              </p>
             </div>
-    
+
             <div class="header-socials">
-              <HSButtonSocial social="telegram"/>
+              <HSButtonSocial social="telegram" />
               <HSButtonSocial social="whatsup" />
             </div>
-    
+
             <div class="header-phone">
               <p class="header-phone__number">+7 (123) 45-67-89</p>
               <p

@@ -16,7 +16,7 @@ interface ITabs {
   content: {
     small: string;
     big: string;
-  },
+  };
   infoCaption: string;
   info: IInfo[];
 }
@@ -46,7 +46,7 @@ const tabs: ITabs[] = [
         key: 'фуршет',
         value: 'до 200 человек',
       },
-    ]
+    ],
   },
   {
     id: 2,
@@ -69,7 +69,7 @@ const tabs: ITabs[] = [
         key: 'фуршет',
         value: 'до 300 человек',
       },
-    ]
+    ],
   },
 ];
 
@@ -79,75 +79,73 @@ const selectTab = (tabId: number) => {
   activeTab.value = tabId;
 
   filteredTabs.value = tabs.filter((tab) => tab.id === activeTab.value);
-}
+};
 </script>
 
 <template>
-<div class="halls-scheme">
-  <div class="container">
-    <h2 class="halls-scheme__caption">Схемы залов</h2>
+  <div class="halls-scheme">
+    <div class="container">
+      <h2 class="halls-scheme__caption">Схемы залов</h2>
 
-    <!-- tabs -->
-    <div class="halls-scheme__tabs">
-      <div
-        v-for="tab in tabs"
-        :key="tab.id"
-        class="halls-scheme__tab"
-        :class="{ 'halls-scheme__tab_active': tab.id === activeTab }"
-        @click="selectTab(tab.id)"
-      >
-        <p class="halls-scheme__tab-text">{{ tab.caption }}</p>
-      </div>
-    </div>
-
-    <!-- tabs content -->
-    <div class="halls-scheme__contents">
-      <!-- tab image -->
-      <div
-        v-for="tab in filteredTabs"
-        :key="tab.id" class="halls-scheme__tab-content"
-        :class="{ 'halls-scheme__tab-content_active': tab.id === activeTab }"
-      >
-        <div v-html="tab.content.small" class="halls-scheme__tab-content-image"></div>
-        <div v-html="tab.content.big" class="halls-scheme__tab-content-image-big"></div>
-      </div>
-  
-      <div class="container">
-        <div class="halls-scheme-tab-content-info">
-          <h2 class="halls-scheme-tab-content-info__caption">
-            {{ filteredTabs[0].infoCaption }}
-          </h2>
-  
-          <!-- tab info -->
-          <div class="halls-scheme-info">
-            <div
-              v-for="item in filteredTabs[0]?.info"
-              :key="item.key"
-              class="halls-scheme-info__row"
-            >
-              <div class="halls-scheme-info__key">{{ item.key }}</div>
-              <div class="halls-scheme-info__value">{{ item.value }}</div>
-            </div>
-          </div>
-  
-          <div class="halls-scheme-tab-content-buttons">
-            <div class="halls-scheme-tab-content-button">
-              <HSButtonOutlined
-                text="Забронировать"
-                :isOutlined=false @click="toggleModal('.js-modal', `${constants.modalToggleClass}`)"/>
-            </div>
-            <HSButtonOutlined text="Посмотреть галерею"/>
-          </div>
-  
+      <!-- tabs -->
+      <div class="halls-scheme__tabs">
+        <div
+          v-for="tab in tabs"
+          :key="tab.id"
+          class="halls-scheme__tab"
+          :class="{ 'halls-scheme__tab_active': tab.id === activeTab }"
+          @click="selectTab(tab.id)"
+        >
+          <p class="halls-scheme__tab-text">{{ tab.caption }}</p>
         </div>
       </div>
-  
+
+      <!-- tabs content -->
+      <div class="halls-scheme__contents">
+        <!-- tab image -->
+        <div
+          v-for="tab in filteredTabs"
+          :key="tab.id"
+          class="halls-scheme__tab-content"
+          :class="{ 'halls-scheme__tab-content_active': tab.id === activeTab }"
+        >
+          <div v-html="tab.content.small" class="halls-scheme__tab-content-image"></div>
+          <div v-html="tab.content.big" class="halls-scheme__tab-content-image-big"></div>
+        </div>
+
+        <div class="container">
+          <div class="halls-scheme-tab-content-info">
+            <h2 class="halls-scheme-tab-content-info__caption">
+              {{ filteredTabs[0].infoCaption }}
+            </h2>
+
+            <!-- tab info -->
+            <div class="halls-scheme-info">
+              <div
+                v-for="item in filteredTabs[0]?.info"
+                :key="item.key"
+                class="halls-scheme-info__row"
+              >
+                <div class="halls-scheme-info__key">{{ item.key }}</div>
+                <div class="halls-scheme-info__value">{{ item.value }}</div>
+              </div>
+            </div>
+
+            <div class="halls-scheme-tab-content-buttons">
+              <div class="halls-scheme-tab-content-button">
+                <HSButtonOutlined
+                  text="Забронировать"
+                  :isOutlined="false"
+                  @click="toggleModal('.js-modal', `${constants.modalToggleClass}`)"
+                />
+              </div>
+              <HSButtonOutlined text="Посмотреть галерею" />
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-
-
-
-</div>
 </template>
 
 <style>
@@ -283,7 +281,7 @@ const selectTab = (tabId: number) => {
 .halls-scheme-tab-content-info {
   border-radius: 16px;
   background: var(--color-background);
-  box-shadow: 0px 8px 16px 0px rgba(34, 35, 36, 0.10);
+  box-shadow: 0px 8px 16px 0px rgba(34, 35, 36, 0.1);
   margin-bottom: 24px;
   padding: 19px 16px 24px 16px;
 }
@@ -337,7 +335,7 @@ const selectTab = (tabId: number) => {
   display: flex;
   padding-top: 9px;
   padding-bottom: 7px;
-  border-bottom: 2px solid #E9EAEC;
+  border-bottom: 2px solid #e9eaec;
 }
 
 @media screen and (min-width: 960px) {
@@ -368,11 +366,11 @@ const selectTab = (tabId: number) => {
   display: flex;
   flex-grow: 1;
   width: 155px;
-  color: var(--ver-201, #18191B);
+  color: var(--ver-201, #18191b);
   font-family: var(--font-family-main);
   /* TODO font-size 14px to base.css */
   font-size: 14px;
-  line-height: 20px; 
+  line-height: 20px;
 }
 
 @media screen and (min-width: 960px) {
@@ -395,7 +393,6 @@ const selectTab = (tabId: number) => {
     gap: 0 15px;
   }
 }
-
 
 .halls-scheme-tab-content-button {
   margin-top: 14px;
