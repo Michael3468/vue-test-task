@@ -2,7 +2,7 @@
 import { ref } from 'vue';
 import HSNavBar from './HSNavBar.vue';
 
-let burgerLinks = (ref < HTMLDivElement) | (null > null);
+let burgerLinks = ref<HTMLDivElement | null>(null);
 
 const toggleLinks = () => {
   burgerLinks.classList.toggle('burger-links_visible');
