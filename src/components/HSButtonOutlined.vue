@@ -1,21 +1,18 @@
 <script setup lang="ts">
-
 export interface Props {
-  text: string,
-  isOutlined?: boolean,
+  text: string;
+  isOutlined?: boolean;
 }
 
-const props = withDefaults(defineProps<Props>(), {
+withDefaults(defineProps<Props>(), {
   isOutlined: true,
-})
+});
 </script>
 
 <template>
-<button
-  :class="['button-outlined', { 'button-filled': !props.isOutlined }]"
->
-  {{ props.text }}
-</button>
+  <button :class="['button-outlined', { 'button-filled': !isOutlined }]">
+    {{ text }}
+  </button>
 </template>
 
 <style>
@@ -61,5 +58,4 @@ const props = withDefaults(defineProps<Props>(), {
     width: 176px;
   }
 }
-
 </style>

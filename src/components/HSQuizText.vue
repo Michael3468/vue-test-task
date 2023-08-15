@@ -5,13 +5,13 @@ interface Props {
   size?: 'big' | 'small';
 }
 
-const props = withDefaults(defineProps<Props>(), {
+withDefaults(defineProps<Props>(), {
   size: 'small',
 })
 </script>
 
 <template>
-<p class="quiz-text" :class="{ big : props.size === 'big' }">
+<p class="quiz-text" :class="{ big : size === 'big' }">
   Ответьте на {{ questionsCount }} {{ questionsWord }} и получите горку
   <br /> из шампанского в подарок
 </p>
