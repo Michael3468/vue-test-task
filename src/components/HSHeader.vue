@@ -43,7 +43,7 @@ import { constants } from '@/assets/js/constants';
 
             <div class="header-socials">
               <HSButtonSocial social="telegram" />
-              <HSButtonSocial social="whatsup" />
+              <HSButtonSocial social="whatsapp" />
             </div>
 
             <div class="header-phone">

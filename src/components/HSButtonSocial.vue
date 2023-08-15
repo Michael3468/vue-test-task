@@ -1,5 +1,5 @@
 <script setup lang="ts">
-type TSocial = 'facebook' | 'whatsup' | 'vk' | 'telegram';
+type TSocial = 'facebook' | 'whatsapp' | 'vk' | 'telegram';
 type TSize = 'big' | 'small';
 
 interface Props {

@@ -16,7 +16,7 @@ import HSLogoFooter from './HSLogoFooter.vue';
 
           <div class="footer-socials__buttons">
             <HSButtonSocial social="facebook" size="big" />
-            <HSButtonSocial social="whatsup" size="big" />
+            <HSButtonSocial social="whatsapp" size="big" />
             <HSButtonSocial social="vk" size="big" />
           </div>
         </div>
