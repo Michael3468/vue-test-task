@@ -72,14 +72,14 @@ import { RouterLink } from 'vue-router';
 
 @media screen and (min-width: 960px) {
   .navbar-link:hover {
-    background: var(--color-third)
+    background: var(--color-third);
   }
 }
 
 .navbar-link > a {
   display: block;
   padding: 12px 16px 12px 16px;
-  color: #18191B;
+  color: #18191b;
   font-family: var(--font-family-main);
   font-size: 16px;
   line-height: 28px;

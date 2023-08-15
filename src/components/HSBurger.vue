@@ -4,19 +4,14 @@ import HSNavBar from './HSNavBar.vue';
 
 let burgerLinks = ref<HTMLDivElement | null>(null);
 
-const toggleLinks = () => { 
+const toggleLinks = () => {
   burgerLinks.classList.toggle('burger-links_visible');
-}
+};
 </script>
 
 <template>
   <div class="burger">
-    <img
-      class="burger-image"
-      src="/img/burger.svg"
-      alt="burger"
-      @click="toggleLinks"
-    >
+    <img class="burger-image" src="/img/burger.svg" alt="burger" @click="toggleLinks" />
 
     <div class="burger-links" ref="burgerLinks">
       <HSNavBar />

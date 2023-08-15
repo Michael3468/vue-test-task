@@ -7,9 +7,9 @@ import HSButtonOutlined from '../HSButtonOutlined.vue';
 
 import { constants } from '@/assets/js/constants';
 
-
 let modalWidth = ref<number>(0);
 let modalTop = ref<number>(window.innerHeight / 2);
+
 const phoneInputRef = ref<HTMLInputElement | null>(null);
 const modalRef = ref<HTMLElement | null>(null);
 const modalWindowHeight = 250;
@@ -18,7 +18,7 @@ const getModalWidth = () => {
   if (modalRef.value) {
     modalWidth.value = modalRef.value.offsetWidth;
   }
-}
+};
 
 const phoneInputClass = 'js-modal-input-phone';
 
@@ -26,12 +26,12 @@ const getScreenCenterOnScroll = () => {
   const handleScroll = () => {
     const screenCenter = Math.floor(window.scrollY + window.innerHeight / 2);
     modalTop.value = screenCenter;
-  }
+  };
 
   window.addEventListener('scroll', handleScroll);
 
   onBeforeUnmount(() => window.removeEventListener('scroll', handleScroll));
-}
+};
 onMounted(() => {
   getModalWidth();
   inputMaskPhone(`.${phoneInputClass}`);
@@ -44,58 +44,58 @@ const bookHall = () => {
   // book hall code
 
   toggleModal('.js-modal', `${constants.modalToggleClass}`);
-}
+};
 </script>
 
 <template>
-<div
-  class="modal js-modal"
-  :style="`transform: translateX(-${modalWidth / 2}px); top: ${modalTop - modalWindowHeight}px`"
-  ref="modalRef"
->
-  <img
-    class="modal-close-button"
-    src="/img/modal-close-x.svg"
-    alt="кнопка закрытия модального окна"
-    @click="toggleModal('.js-modal', `${constants.modalToggleClass}`)"
+  <div
+    class="modal js-modal"
+    :style="`transform: translateX(-${modalWidth / 2}px); top: ${modalTop - modalWindowHeight}px`"
+    ref="modalRef"
   >
+    <img
+      class="modal-close-button"
+      src="/img/modal-close-x.svg"
+      alt="кнопка закрытия модального окна"
+      @click="toggleModal('.js-modal', `${constants.modalToggleClass}`)"
+    />
 
-  <div class="modal-top">
-    <div class="modal-info">
-      <p class="modal-caption">Оставьте заявку</p>
-      <p class="modal-caption-text">Скоро с вами свяжется администратор</p>
+    <div class="modal-top">
+      <div class="modal-info">
+        <p class="modal-caption">Оставьте заявку</p>
+        <p class="modal-caption-text">Скоро с вами свяжется администратор</p>
+      </div>
+
+      <div class="modal-inputs">
+        <label class="modal-input-label">
+          Ваше имя
+          <input class="modal-input" type="text" />
+        </label>
+
+        <label class="modal-input-label">
+          Ваш номер телефона
+          <input
+            :class="`modal-input ${phoneInputClass}`"
+            type="text"
+            placeholder="+7 (___) ___-__-__"
+            ref="phoneInputRef"
+          />
+        </label>
+      </div>
     </div>
-  
-    <div class="modal-inputs">
-      <label class="modal-input-label">
-        Ваше имя
-        <input class="modal-input" type="text">
-      </label>
-    
-      <label class="modal-input-label">
-        Ваш номер телефона
-        <input
-          :class="`modal-input ${phoneInputClass}`"
-          type="text"
-          placeholder="+7 (___) ___-__-__"
-          ref="phoneInputRef"
-        >
-      </label>
+
+    <div class="modal-bottom">
+      <p class="modal-bottom-text">
+        Нажимая на кнопку «Отправить», Вы соглашаетесь<br />
+        с
+        <a class="modal-bottom-text-link" href="change_me">Политикой конфиденциальности</a>
+      </p>
+
+      <div class="modal-bottom-button">
+        <HSButtonOutlined text="Забронировать" :isOutlined="false" @click="bookHall" />
+      </div>
     </div>
   </div>
-
-  <div class="modal-bottom">
-    <p class="modal-bottom-text">
-      Нажимая на кнопку «Отправить», Вы соглашаетесь<br /> с
-      <a class="modal-bottom-text-link" href="change_me">Политикой конфиденциальности</a>
-    </p>
-
-    <div class="modal-bottom-button">
-      <HSButtonOutlined text="Забронировать" :isOutlined=false @click="bookHall"/>
-    </div>
-  </div>
-
-</div>
 </template>
 
 <style>
@@ -112,7 +112,7 @@ const bookHall = () => {
   z-index: 9999;
 
   border-radius: var(--border-radius-big);
-  box-shadow: 0px 8px 16px 0px rgba(34, 35, 36, 0.10);
+  box-shadow: 0px 8px 16px 0px rgba(34, 35, 36, 0.1);
 }
 
 @media screen and (min-width: 414px) {
@@ -200,7 +200,6 @@ const bookHall = () => {
   }
 }
 
-
 .modal-input-label {
   display: flex;
   flex-direction: column;
@@ -213,8 +212,8 @@ const bookHall = () => {
 }
 
 .modal-input {
-  color: #27282A;
-  background-color: #E9EAEC;
+  color: #27282a;
+  background-color: #e9eaec;
   border: none;
   border-radius: var(--border-radius-small);
 
@@ -229,7 +228,7 @@ const bookHall = () => {
 }
 
 .modal-input::placeholder {
-  color: #63636F;
+  color: #63636f;
 }
 
 .modal-bottom {

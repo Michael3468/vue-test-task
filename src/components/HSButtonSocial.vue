@@ -1,5 +1,5 @@
 <script setup lang="ts">
-type TSocial = 'facebook' | 'whatsup' | 'vk' | 'telegram';
+type TSocial = 'facebook' | 'whatsapp' | 'vk' | 'telegram';
 type TSize = 'big' | 'small';
 
 interface Props {
@@ -8,18 +8,18 @@ interface Props {
   link?: string;
 }
 
-const props = withDefaults(defineProps<Props>(), {
+withDefaults(defineProps<Props>(), {
   size: 'small',
   link: '#',
 });
 </script>
 
 <template>
-<button class="button-social" :class="{ 'button-social_small' : props.size === 'small' }">
-  <a class="button-social-link" :href="link">
-    <img :src="`/img/icon-${social}.svg`" :alt="social" class="button-social-image">
-  </a>
-</button>
+  <button class="button-social" :class="{ 'button-social_small': size === 'small' }">
+    <a class="button-social-link" :href="link">
+      <img :src="`/img/icon-${social}.svg`" :alt="social" class="button-social-image" />
+    </a>
+  </button>
 </template>
 
 <style>
