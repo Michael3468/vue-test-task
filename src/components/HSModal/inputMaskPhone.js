@@ -1,34 +1,71 @@
-// className = '.some-class-name' (starts with dot)
-export default function inputMaskPhone(className) {
+/**
+ * getCountryCodeLength
+ * @param {string} phoneFormat
+ * @returns {boolean}
+ */
+const getCountryCodeLength = (phoneFormat) => {
+  return phoneFormat.split('(')[0].length;
+};
+
+/**
+ * isDigit
+ * @param {number} keyCode
+ * @returns {boolean}
+ */
+const isDigit = (keyCode) => keyCode > 47 && keyCode < 58;
+
+/**
+ * inputMaskPhone
+ * @param {string} inputClassName
+ * @param {string} phoneFormat
+ *
+ * inputClassName = '.some-class-name' (starts with dot)
+ *
+ * phoneFormat example: '+7 (___) ___-__-__'
+ */
+export default function inputMaskPhone(inputClassName, phoneFormat) {
   window.addEventListener('DOMContentLoaded', function () {
-    [].forEach.call(document.querySelectorAll(className), function (input) {
-      var keyCode;
+    [].forEach.call(document.querySelectorAll(inputClassName), function (input) {
+      let keyCode;
+      const countryCodeLength = getCountryCodeLength(phoneFormat);
+      const afterCodeSymbolsLength = ' ('.length;
+
       function mask(event) {
         event.keyCode && (keyCode = event.keyCode);
-        var pos = this.selectionStart;
+
+        let pos = this.selectionStart;
         if (pos < 3) event.preventDefault();
-        var matrix = '+7 (___)-___-__-__',
+
+        let matrix = phoneFormat,
           i = 0,
           def = matrix.replace(/\D/g, ''),
-          val = this.value.replace(/\D/g, ''),
-          new_value = matrix.replace(/[_\d]/g, function (a) {
-            return i < val.length ? val.charAt(i++) || def.charAt(i) : a;
+          inputValue = this.value.replace(/\D/g, ''),
+          formattedValue = matrix.replace(/[_\d]/g, function (char) {
+            return i < inputValue.length ? inputValue.charAt(i++) || def.charAt(i) : char;
           });
-        i = new_value.indexOf('_');
+
+        i = formattedValue.indexOf('_');
         if (i != -1) {
-          i < 5 && (i = 3);
-          new_value = new_value.slice(0, i);
+          i < countryCodeLength + afterCodeSymbolsLength && (i = countryCodeLength);
+          formattedValue = formattedValue.slice(0, i);
         }
-        var reg = matrix
+
+        let reg = matrix
           .slice(0, this.value.length)
           .replace(/_+/g, function (a) {
             return '\\d{1,' + a.length + '}';
           })
           .replace(/[+()]/g, '\\$&');
+
         reg = new RegExp('^' + reg + '$');
-        if (!reg.test(this.value) || this.value.length < 5 || (keyCode > 47 && keyCode < 58))
-          this.value = new_value;
-        if (event.type == 'blur' && this.value.length < 5) this.value = '';
+
+        if (!reg.test(this.value) || this.value.length < countryCodeLength || isDigit(keyCode)) {
+          this.value = formattedValue;
+        }
+
+        if (event.type == 'blur' && this.value.length < countryCodeLength) {
+          this.value = '';
+        }
       }
 
       input.addEventListener('input', mask, false);

@@ -34,7 +34,7 @@ const getScreenCenterOnScroll = () => {
 };
 onMounted(() => {
   getModalWidth();
-  inputMaskPhone(`.${phoneInputClass}`);
+  inputMaskPhone(`.${phoneInputClass}`, constants.phoneFormat);
 
   getScreenCenterOnScroll();
 });
@@ -77,7 +77,7 @@ const bookHall = () => {
           <input
             :class="`modal-input ${phoneInputClass}`"
             type="text"
-            placeholder="+7 (___) ___-__-__"
+            :placeholder="constants.phoneFormat"
             ref="phoneInputRef"
           />
         </label>
