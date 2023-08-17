@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 import HSButtonOutlined from './HSButtonOutlined.vue';
 
 import toggleModal from './HSModal/toggleModal';
@@ -22,63 +22,26 @@ interface ITabs {
 }
 
 let activeTab = ref<number>(1);
+let tabs = ref<ITabs[] | null>(null);
+let filteredTabs = ref<ITabs[] | null>(null);
 
-// TODO: move to json file
-const tabs: ITabs[] = [
-  {
-    id: 1,
-    caption: 'Зал Первый',
-    content: {
-      small: `<img src="/img/hall-1.svg" alt="зал 1">`,
-      big: `<img class="halls-scheme__tab-content-image-big" src="/img/hall-1-big.svg" alt="зал 1">`,
-    },
-    infoCaption: 'Просторный зал с панорамным видом на город',
-    info: [
-      {
-        key: 'площадь',
-        value: '160 кв. метров',
-      },
-      {
-        key: 'вместимость',
-        value: 'до 100 человек',
-      },
-      {
-        key: 'фуршет',
-        value: 'до 200 человек',
-      },
-    ],
-  },
-  {
-    id: 2,
-    caption: 'Зал Второй',
-    content: {
-      small: `<img src="/img/hall-2.svg" alt="зал 2">`,
-      big: `<img class="halls-scheme__tab-content-image-big" src="/img/hall-2-big.svg" alt="зал 2">`,
-    },
-    infoCaption: 'Просторный зал с панорамным видом на море',
-    info: [
-      {
-        key: 'площадь',
-        value: '260 кв. метров',
-      },
-      {
-        key: 'вместимость',
-        value: 'до 200 человек',
-      },
-      {
-        key: 'фуршет',
-        value: 'до 300 человек',
-      },
-    ],
-  },
-];
+fetch('/json/tabs.json')
+  .then((response) => response.json())
+  .then((data) => (tabs.value = data))
+  .catch((error) => {
+    throw Error(error);
+  });
 
-let filteredTabs = ref<ITabs[]>(tabs);
+watch(tabs, (newValue) => {
+  filteredTabs.value = newValue;
+});
 
 const selectTab = (tabId: number) => {
   activeTab.value = tabId;
 
-  filteredTabs.value = tabs.filter((tab) => tab.id === activeTab.value);
+  if (tabs.value) {
+    filteredTabs.value = tabs.value.filter((tab) => tab.id === activeTab.value);
+  }
 };
 </script>
 
@@ -116,13 +79,13 @@ const selectTab = (tabId: number) => {
         <div class="container">
           <div class="halls-scheme-tab-content-info">
             <h2 class="halls-scheme-tab-content-info__caption">
-              {{ filteredTabs[0].infoCaption }}
+              {{ filteredTabs?.[0] && filteredTabs[0].infoCaption }}
             </h2>
 
             <!-- tab info -->
             <div class="halls-scheme-info">
               <div
-                v-for="item in filteredTabs[0]?.info"
+                v-for="item in filteredTabs?.[0]?.info"
                 :key="item.key"
                 class="halls-scheme-info__row"
               >
