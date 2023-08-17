@@ -1,0 +1,48 @@
+[
+  {
+    "id": 1,
+    "caption": "Зал Первый",
+    "content": {
+      "small": "<img src=\"/img/hall-1.svg\" alt=\"зал 1\">",
+      "big": "<img class=\"halls-scheme__tab-content-image-big\" src=\"/img/hall-1-big.svg\" alt=\"зал 1\">"
+    },
+    "infoCaption": "Просторный зал с панорамным видом на город",
+    "info": [
+      {
+        "key": "площадь",
+        "value": "160 кв. метров"
+      },
+      {
+        "key": "вместимость",
+        "value": "до 100 человек"
+      },
+      {
+        "key": "фуршет",
+        "value": "до 200 человек"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "caption": "Зал Второй",
+    "content": {
+      "small": "<img src=\"/img/hall-2.svg\" alt=\"зал 2\">",
+      "big": "<img class=\"halls-scheme__tab-content-image-big\" src=\"/img/hall-2-big.svg\" alt=\"зал 2\">"
+    },
+    "infoCaption": "Просторный зал с панорамным видом на море",
+    "info": [
+      {
+        "key": "площадь",
+        "value": "260 кв. метров"
+      },
+      {
+        "key": "вместимость",
+        "value": "до 200 человек"
+      },
+      {
+        "key": "фуршет",
+        "value": "до 300 человек"
+      }
+    ]
+  }
+]

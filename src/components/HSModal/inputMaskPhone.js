@@ -9,7 +9,7 @@ const getCountryCodeLength = (phoneFormat) => {
 
 /**
  * isDigit
- * @param {number} keyCode
+ * @param {number} keyCode event.keyCode
  * @returns {boolean}
  */
 const isDigit = (keyCode) => keyCode > 47 && keyCode < 58;
