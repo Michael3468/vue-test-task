@@ -28,9 +28,7 @@ let filteredTabs = ref<ITabs[] | null>(null);
 fetch('/json/tabs.json')
   .then((response) => response.json())
   .then((data) => (tabs.value = data))
-  .catch((error) => {
-    throw Error(error);
-  });
+  .catch((error) => console.log(error));
 
 watch(tabs, (newValue) => {
   filteredTabs.value = newValue;
