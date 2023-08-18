@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, watch } from 'vue';
+import { onMounted, ref, watch } from 'vue';
 import HSButtonOutlined from './HSButtonOutlined.vue';
 
 import toggleModal from './HSModal/toggleModal';
@@ -25,10 +25,18 @@ let activeTab = ref<number>(1);
 let tabs = ref<ITabs[] | null>(null);
 let filteredTabs = ref<ITabs[] | null>(null);
 
-fetch('/json/tabs.json')
-  .then((response) => response.json())
-  .then((data) => (tabs.value = data))
-  .catch((error) => console.log(error));
+async function fetchTabsData() {
+  try {
+    const response = await fetch('/json/tabs.json');
+    tabs.value = await response.json();
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+onMounted(() => {
+  fetchTabsData();
+});
 
 watch(tabs, (newValue) => {
   filteredTabs.value = newValue;
