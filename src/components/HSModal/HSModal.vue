@@ -22,16 +22,17 @@ const getModalWidth = () => {
 
 const phoneInputClass = 'js-modal-input-phone';
 
-const getScreenCenterOnScroll = () => {
-  const handleScroll = () => {
-    const screenCenter = Math.floor(window.scrollY + window.innerHeight / 2);
-    modalTop.value = screenCenter;
-  };
+const handleScroll = () => {
+  const screenCenter = Math.floor(window.scrollY + window.innerHeight / 2);
+  modalTop.value = screenCenter;
+};
 
+const getScreenCenterOnScroll = () => {
   window.addEventListener('scroll', handleScroll);
 
   onBeforeUnmount(() => window.removeEventListener('scroll', handleScroll));
 };
+
 onMounted(() => {
   getModalWidth();
   inputMaskPhone(`.${phoneInputClass}`, constants.phoneFormat);
