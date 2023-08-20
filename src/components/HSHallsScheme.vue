@@ -2,8 +2,9 @@
 import { onMounted, ref, watch } from 'vue';
 import HSButtonOutlined from './HSButtonOutlined.vue';
 
-import toggleModal from './HSModal/toggleModal';
-import { constants } from '@/assets/js/constants';
+import { useModalStore } from '../stores/ModalStore';
+
+const modalStore = useModalStore();
 
 interface IInfo {
   key: string;
@@ -105,7 +106,7 @@ const selectTab = (tabId: number) => {
                 <HSButtonOutlined
                   text="Забронировать"
                   :isOutlined="false"
-                  @click="toggleModal('.js-modal', `${constants.modalToggleClass}`)"
+                  @click="modalStore.showModal"
                 />
               </div>
               <HSButtonOutlined text="Посмотреть галерею" />

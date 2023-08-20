@@ -2,13 +2,15 @@
 import { ref, onMounted, onBeforeUnmount } from 'vue';
 
 import inputMaskPhone from './inputMaskPhone';
-import toggleModal from './toggleModal';
 import HSButtonOutlined from '../HSButtonOutlined.vue';
 
 import { constants } from '@/assets/js/constants';
+import { useModalStore } from '../../stores/ModalStore';
 
-let modalWidth = ref<number>(0);
-let modalTop = ref<number>(window.innerHeight / 2);
+const modalStore = useModalStore();
+
+const modalWidth = ref<number>(0);
+const modalTop = ref<number>(window.innerHeight / 2);
 
 const phoneInputRef = ref<HTMLInputElement | null>(null);
 const modalRef = ref<HTMLElement | null>(null);
@@ -44,13 +46,14 @@ const bookHall = () => {
   console.log('book hall');
   // book hall code
 
-  toggleModal('.js-modal', `${constants.modalToggleClass}`);
+  modalStore.hideModal();
 };
 </script>
 
 <template>
   <div
     class="modal js-modal"
+    :class="modalStore.isModalVisible ? constants.modalToggleClass : ''"
     :style="`transform: translateX(-${modalWidth / 2}px); top: ${modalTop - modalWindowHeight}px`"
     ref="modalRef"
   >
@@ -58,7 +61,7 @@ const bookHall = () => {
       class="modal-close-button"
       src="/img/modal-close-x.svg"
       alt="кнопка закрытия модального окна"
-      @click="toggleModal('.js-modal', `${constants.modalToggleClass}`)"
+      @click="modalStore.hideModal"
     />
 
     <div class="modal-top">
