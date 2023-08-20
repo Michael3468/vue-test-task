@@ -29,6 +29,16 @@ const handleScroll = () => {
   modalTop.value = screenCenter;
 };
 
+const handleKeyPress = (event: KeyboardEvent) => {
+  if (event.key === 'Escape' && modalStore.isModalVisible) {
+    modalStore.hideModal();
+  }
+};
+
+const addKeyupListener = () => {
+  window.addEventListener('keyup', handleKeyPress);
+};
+
 const getScreenCenterOnScroll = () => {
   window.addEventListener('scroll', handleScroll);
 
@@ -40,6 +50,7 @@ onMounted(() => {
   inputMaskPhone(`.${phoneInputClass}`, constants.phoneFormat);
 
   getScreenCenterOnScroll();
+  addKeyupListener();
 });
 
 const bookHall = () => {
