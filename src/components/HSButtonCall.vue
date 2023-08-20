@@ -1,12 +1,11 @@
 <script setup lang="ts">
-import { constants } from '@/assets/js/constants';
-import toggleModal from './HSModal/toggleModal';
+import { useModalStore } from '../stores/ModalStore';
+
+const modalStore = useModalStore();
 </script>
 
 <template>
-  <button class="call-button" @click="toggleModal('.js-modal', `${constants.modalToggleClass}`)">
-    Позвонить
-  </button>
+  <button class="call-button" @click="modalStore.showModal">Позвонить</button>
 </template>
 
 <style>

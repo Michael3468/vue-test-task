@@ -2,8 +2,9 @@
 import { onMounted, ref, watch } from 'vue';
 import HSButtonOutlined from './HSButtonOutlined.vue';
 
-import toggleModal from './HSModal/toggleModal';
-import { constants } from '@/assets/js/constants';
+import { useModalStore } from '../stores/ModalStore';
+
+const modalStore = useModalStore();
 
 interface IInfo {
   key: string;
@@ -21,9 +22,9 @@ interface ITabs {
   info: IInfo[];
 }
 
-let activeTab = ref<number>(1);
+let activeTabId = ref<number>(1);
 let tabs = ref<ITabs[] | null>(null);
-let filteredTabs = ref<ITabs[] | null>(null);
+let activeTabData = ref<ITabs | null>(null);
 
 async function fetchTabsData() {
   try {
@@ -39,14 +40,14 @@ onMounted(() => {
 });
 
 watch(tabs, (newValue) => {
-  filteredTabs.value = newValue;
+  activeTabData.value = newValue?.[0] ?? null;
 });
 
 const selectTab = (tabId: number) => {
-  activeTab.value = tabId;
+  activeTabId.value = tabId;
 
   if (tabs.value) {
-    filteredTabs.value = tabs.value.filter((tab) => tab.id === activeTab.value);
+    activeTabData.value = tabs.value.filter((tab) => tab.id === activeTabId.value)[0];
   }
 };
 </script>
@@ -62,7 +63,7 @@ const selectTab = (tabId: number) => {
           v-for="tab in tabs"
           :key="tab.id"
           class="halls-scheme__tab"
-          :class="{ 'halls-scheme__tab_active': tab.id === activeTab }"
+          :class="{ 'halls-scheme__tab_active': tab.id === activeTabId }"
           @click="selectTab(tab.id)"
         >
           <p class="halls-scheme__tab-text">{{ tab.caption }}</p>
@@ -73,25 +74,25 @@ const selectTab = (tabId: number) => {
       <div class="halls-scheme__contents">
         <!-- tab image -->
         <div
-          v-for="tab in filteredTabs"
-          :key="tab.id"
+          v-if="activeTabData"
+          :key="activeTabData.id"
           class="halls-scheme__tab-content"
-          :class="{ 'halls-scheme__tab-content_active': tab.id === activeTab }"
+          :class="{ 'halls-scheme__tab-content_active': activeTabData.id === activeTabId }"
         >
-          <div v-html="tab.content.small" class="halls-scheme__tab-content-image"></div>
-          <div v-html="tab.content.big" class="halls-scheme__tab-content-image-big"></div>
+          <div v-html="activeTabData.content.small" class="halls-scheme__tab-content-image"></div>
+          <div v-html="activeTabData.content.big" class="halls-scheme__tab-content-image-big"></div>
         </div>
 
         <div class="container">
-          <div class="halls-scheme-tab-content-info">
+          <div v-if="activeTabData" class="halls-scheme-tab-content-info">
             <h2 class="halls-scheme-tab-content-info__caption">
-              {{ filteredTabs?.[0] && filteredTabs[0].infoCaption }}
+              {{ activeTabData.infoCaption }}
             </h2>
 
             <!-- tab info -->
             <div class="halls-scheme-info">
               <div
-                v-for="item in filteredTabs?.[0]?.info"
+                v-for="item in activeTabData.info"
                 :key="item.key"
                 class="halls-scheme-info__row"
               >
@@ -105,7 +106,7 @@ const selectTab = (tabId: number) => {
                 <HSButtonOutlined
                   text="Забронировать"
                   :isOutlined="false"
-                  @click="toggleModal('.js-modal', `${constants.modalToggleClass}`)"
+                  @click="modalStore.showModal"
                 />
               </div>
               <HSButtonOutlined text="Посмотреть галерею" />

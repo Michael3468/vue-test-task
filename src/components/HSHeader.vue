@@ -5,8 +5,9 @@ import HSButtonCall from './HSButtonCall.vue';
 import HSButtonSocial from './HSButtonSocial.vue';
 import HSNavBar from './HSNavBar.vue';
 
-import toggleModal from './HSModal/toggleModal';
-import { constants } from '@/assets/js/constants';
+import { useModalStore } from '../stores/ModalStore';
+
+const modalStore = useModalStore();
 </script>
 
 <template>
@@ -48,12 +49,7 @@ import { constants } from '@/assets/js/constants';
 
             <div class="header-phone">
               <p class="header-phone__number">+7 (123) 45-67-89</p>
-              <p
-                class="header-phone__button"
-                @click="toggleModal('.js-modal', `${constants.modalToggleClass}`)"
-              >
-                Перезвоните мне
-              </p>
+              <p class="header-phone__button" @click="modalStore.showModal">Перезвоните мне</p>
             </div>
           </div>
         </div>
