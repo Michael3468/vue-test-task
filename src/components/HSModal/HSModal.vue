@@ -11,7 +11,9 @@ const modalStore = useModalStore();
 
 const modalWidth = ref<number>(0);
 const modalTop = ref<number>(window.innerHeight / 2);
+const screenWidthCenter = ref<number>(window.innerWidth / 2);
 
+// TODO: move phone input with inputMaskPhone to separate component
 const phoneInputRef = ref<HTMLInputElement | null>(null);
 const modalRef = ref<HTMLElement | null>(null);
 const modalWindowHeight = 250;
@@ -24,19 +26,25 @@ const getModalWidth = () => {
 
 const phoneInputClass = 'js-modal-input-phone';
 
-const handleScroll = () => {
-  const screenCenter = Math.floor(window.scrollY + window.innerHeight / 2);
-  modalTop.value = screenCenter;
-};
-
 const handleKeyPress = (event: KeyboardEvent) => {
   if (event.key === 'Escape' && modalStore.isModalVisible) {
     modalStore.hideModal();
   }
 };
 
+const handleScroll = () => {
+  const screenCenter = Math.floor(window.scrollY + window.innerHeight / 2);
+  modalTop.value = screenCenter;
+};
+
+const handleResize = () => {
+  screenWidthCenter.value = Math.floor(window.innerWidth / 2);
+};
+
 const addKeyupListener = () => {
   window.addEventListener('keyup', handleKeyPress);
+
+  onBeforeUnmount(() => window.removeEventListener('keyup', handleKeyPress));
 };
 
 const getScreenCenterOnScroll = () => {
@@ -45,11 +53,19 @@ const getScreenCenterOnScroll = () => {
   onBeforeUnmount(() => window.removeEventListener('scroll', handleScroll));
 };
 
+const getScreenWidthCenterOnResize = () => {
+  window.addEventListener('resize', handleResize);
+
+  onBeforeUnmount(() => window.removeEventListener('resize', handleResize));
+};
+
 onMounted(() => {
   getModalWidth();
   inputMaskPhone(`.${phoneInputClass}`, constants.phoneFormat);
 
   getScreenCenterOnScroll();
+  getScreenWidthCenterOnResize();
+
   addKeyupListener();
 });
 
@@ -65,7 +81,9 @@ const bookHall = () => {
   <div
     class="modal js-modal"
     :class="modalStore.isModalVisible ? constants.modalToggleClass : ''"
-    :style="`transform: translateX(-${modalWidth / 2}px); top: ${modalTop - modalWindowHeight}px`"
+    :style="`left: ${screenWidthCenter};
+       transform: translateX(-${modalWidth / 2}px);
+       top: ${modalTop - modalWindowHeight}px`"
     ref="modalRef"
   >
     <img
