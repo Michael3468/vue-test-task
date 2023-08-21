@@ -63,6 +63,8 @@ const getScreenWidthCenterOnResize = () => {
 };
 
 onMounted(() => {
+  getModalWidth();
+
   inputMaskPhone(`.${phoneInputClass}`, constants.phoneFormat);
 
   getScreenCenterOnScroll();
