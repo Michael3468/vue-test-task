@@ -40,6 +40,8 @@ const handleScroll = () => {
 const handleResize = () => {
   console.log(Math.floor(window.innerWidth / 2));
   screenWidthCenter.value = Math.floor(window.innerWidth / 2);
+
+  getModalWidth();
 };
 
 const addKeyupListener = () => {
@@ -61,7 +63,6 @@ const getScreenWidthCenterOnResize = () => {
 };
 
 onMounted(() => {
-  getModalWidth();
   inputMaskPhone(`.${phoneInputClass}`, constants.phoneFormat);
 
   getScreenCenterOnScroll();
