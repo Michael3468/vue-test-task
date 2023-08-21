@@ -82,7 +82,7 @@ const bookHall = () => {
   <div
     class="modal js-modal"
     :class="modalStore.isModalVisible ? constants.modalToggleClass : ''"
-    :style="`left: ${screenWidthCenter};
+    :style="`left: ${screenWidthCenter}px;
        transform: translateX(-${modalWidth / 2}px);
        top: ${modalTop - modalWindowHeight}px`"
     ref="modalRef"
