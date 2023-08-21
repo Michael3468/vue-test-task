@@ -142,7 +142,7 @@ const bookHall = () => {
 
   background-color: var(--color-third);
   top: 50%;
-  left: 50%;
+  /* left: 50%; */
   z-index: 9999;
 
   border-radius: var(--border-radius-big);
