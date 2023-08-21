@@ -39,6 +39,8 @@ const handleScroll = () => {
 
 const handleResize = () => {
   screenWidthCenter.value = Math.floor(window.innerWidth / 2);
+
+  getModalWidth();
 };
 
 const addKeyupListener = () => {
@@ -81,7 +83,7 @@ const bookHall = () => {
   <div
     class="modal js-modal"
     :class="modalStore.isModalVisible ? constants.modalToggleClass : ''"
-    :style="`left: ${screenWidthCenter};
+    :style="`left: ${screenWidthCenter}px;
        transform: translateX(-${modalWidth / 2}px);
        top: ${modalTop - modalWindowHeight}px`"
     ref="modalRef"
@@ -141,7 +143,6 @@ const bookHall = () => {
 
   background-color: var(--color-third);
   top: 50%;
-  left: 50%;
   z-index: 9999;
 
   border-radius: var(--border-radius-big);
