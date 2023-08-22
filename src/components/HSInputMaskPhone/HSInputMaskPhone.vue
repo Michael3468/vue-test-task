@@ -1,6 +1,8 @@
 <!-- phoneFormat: '+7 (___) ___-__-__' -->
 
 <script setup lang="ts">
+import { ref } from 'vue';
+
 import inputMaskPhone from './inputMaskPhone';
 import { constants } from '@/assets/js/constants';
 
@@ -16,16 +18,33 @@ withDefaults(defineProps<Props>(), {
 });
 
 const phoneInputClass = 'js-input-phone-mask';
-
 inputMaskPhone(`.${phoneInputClass}`, constants.phoneFormat);
+
+const inputRef = ref<HTMLInputElement | null>(null);
+
+const setCursorToTheEnd = () => {
+  const inputElement = inputRef.value;
+
+  if (inputElement) {
+    const length = inputElement.value.length;
+    inputElement.setSelectionRange(length, length);
+  }
+};
 </script>
 
 <template>
   <label class="input-label">
     {{ labelText }}
 
-    <input v-if="mask" :class="`input ${phoneInputClass}`" type="text" :placeholder="placeholder" />
-    <input v-else class="input" type="text" :placeholder="placeholder" />
+    <input
+      v-if="mask"
+      :class="`input ${phoneInputClass}`"
+      type="text"
+      :placeholder="placeholder"
+      v-on:focusin="setCursorToTheEnd"
+      ref="inputRef"
+    />
+    <input v-else class="input" type="text" :placeholder="placeholder" ref="inputRef" />
   </label>
 </template>
 
