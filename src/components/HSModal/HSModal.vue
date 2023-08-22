@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { ref, onMounted, onBeforeUnmount } from 'vue';
 
-import inputMaskPhone from './inputMaskPhone';
 import HSButtonOutlined from '../HSButtonOutlined.vue';
+import HSInputMaskPhone from '../HSInputMaskPhone/HSInputMaskPhone.vue';
 
 import { constants } from '@/assets/js/constants';
 import { useModalStore } from '../../stores/ModalStore';
@@ -13,8 +13,6 @@ const modalWidth = ref<number>(0);
 const modalTop = ref<number>(window.innerHeight / 2);
 const screenWidthCenter = ref<number>(window.innerWidth / 2);
 
-// TODO: move phone input with inputMaskPhone to separate component
-const phoneInputRef = ref<HTMLInputElement | null>(null);
 const modalRef = ref<HTMLElement | null>(null);
 const modalWindowHeight = 250;
 
@@ -23,8 +21,6 @@ const getModalWidth = () => {
     modalWidth.value = modalRef.value.offsetWidth;
   }
 };
-
-const phoneInputClass = 'js-modal-input-phone';
 
 const handleKeyPress = (event: KeyboardEvent) => {
   if (event.key === 'Escape' && modalStore.isModalVisible) {
@@ -63,7 +59,6 @@ const getScreenWidthCenterOnResize = () => {
 
 onMounted(() => {
   getModalWidth();
-  inputMaskPhone(`.${phoneInputClass}`, constants.phoneFormat);
 
   getScreenCenterOnScroll();
   getScreenWidthCenterOnResize();
@@ -102,20 +97,9 @@ const bookHall = () => {
       </div>
 
       <div class="modal-inputs">
-        <label class="modal-input-label">
-          Ваше имя
-          <input class="modal-input" type="text" />
-        </label>
+        <HSInputMaskPhone labelText="Ваше имя" :mask="false" />
 
-        <label class="modal-input-label">
-          Ваш номер телефона
-          <input
-            :class="`modal-input ${phoneInputClass}`"
-            type="text"
-            :placeholder="constants.phoneFormat"
-            ref="phoneInputRef"
-          />
-        </label>
+        <HSInputMaskPhone labelText="Ваш номер телефона" :placeholder="constants.phoneFormat" />
       </div>
     </div>
 
@@ -232,37 +216,6 @@ const bookHall = () => {
     margin-bottom: 9px;
     margin-right: 64px;
   }
-}
-
-.modal-input-label {
-  display: flex;
-  flex-direction: column;
-  color: var(--color-fourth);
-  font-family: var(--font-family-second);
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 15px;
-}
-
-.modal-input {
-  color: #27282a;
-  background-color: #e9eaec;
-  border: none;
-  border-radius: var(--border-radius-small);
-
-  font-family: var(--font-family-second);
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 20px;
-
-  padding: 17px 15px 16px 15px;
-  margin-top: 5px;
-}
-
-.modal-input::placeholder {
-  color: #63636f;
 }
 
 .modal-bottom {
