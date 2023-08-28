@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { onMounted, ref, watch } from 'vue';
-import HSButtonOutlined from './HSButtonOutlined.vue';
+import { HSButtonOutlined } from '.';
 
 import { useModalStore } from '../stores/ModalStore';
 

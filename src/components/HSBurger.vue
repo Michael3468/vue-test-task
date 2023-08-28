@@ -1,6 +1,6 @@
 <script setup lang="js">
 import { ref } from 'vue';
-import HSNavBar from './HSNavBar.vue';
+import { HSNavBar } from '.';
 
 let burgerLinks = ref<HTMLDivElement | null>(null);
 
