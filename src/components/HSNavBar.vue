@@ -27,10 +27,10 @@ import { RouterLink } from 'vue-router';
 }
 
 .navbar-links {
+  width: 100%;
   max-width: 320px;
   position: relative;
   background: var(--color-background);
-  width: 80vw;
   box-shadow: 0px 0px 10px black;
   padding: 20px;
   top: 30px;
@@ -45,7 +45,6 @@ import { RouterLink } from 'vue-router';
     box-shadow: none;
     background: none;
     padding: 0;
-    min-width: 100%;
   }
 }
 
