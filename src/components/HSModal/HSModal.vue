@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted, onBeforeUnmount } from 'vue';
 
-import HSButtonOutlined from '../HSButtonOutlined.vue';
-import HSInputMaskPhone from '../HSInputMaskPhone/HSInputMaskPhone.vue';
+import { HSButtonOutlined, HSInputMaskPhone } from '..';
 
 import { constants } from '@/assets/js/constants';
 import { useModalStore } from '../../stores/ModalStore';

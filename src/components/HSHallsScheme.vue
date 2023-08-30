@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { onMounted, ref, watch } from 'vue';
-import HSButtonOutlined from './HSButtonOutlined.vue';
+import { HSButtonOutlined } from '.';
 
 import { useModalStore } from '../stores/ModalStore';
 
@@ -57,7 +57,7 @@ const selectTab = (tabId: number) => {
     <div class="container">
       <h2 class="halls-scheme__caption">Схемы залов</h2>
 
-      <!-- tabs -->
+      <!-- tab caption -->
       <div class="halls-scheme__tabs">
         <div
           v-for="tab in tabs"
@@ -70,20 +70,25 @@ const selectTab = (tabId: number) => {
         </div>
       </div>
 
-      <!-- tabs content -->
+      <!-- tab content -->
       <div class="halls-scheme__contents">
         <!-- tab image -->
-        <div
-          v-if="activeTabData"
-          :key="activeTabData.id"
-          class="halls-scheme__tab-content"
-          :class="{ 'halls-scheme__tab-content_active': activeTabData.id === activeTabId }"
-        >
-          <div v-html="activeTabData.content.small" class="halls-scheme__tab-content-image"></div>
-          <div v-html="activeTabData.content.big" class="halls-scheme__tab-content-image-big"></div>
+        <div class="halls-scheme__contents-section">
+          <div
+            v-if="activeTabData"
+            :key="activeTabData.id"
+            class="halls-scheme__tab-content"
+            :class="{ 'halls-scheme__tab-content_active': activeTabData.id === activeTabId }"
+          >
+            <div v-html="activeTabData.content.small" class="halls-scheme__tab-content-image"></div>
+            <div
+              v-html="activeTabData.content.big"
+              class="halls-scheme__tab-content-image-big"
+            ></div>
+          </div>
         </div>
 
-        <div class="container">
+        <div class="halls-scheme__contents-section">
           <div v-if="activeTabData" class="halls-scheme-tab-content-info">
             <h2 class="halls-scheme-tab-content-info__caption">
               {{ activeTabData.infoCaption }}
@@ -200,6 +205,10 @@ const selectTab = (tabId: number) => {
   }
 }
 
+.halls-scheme__contents-section {
+  flex: 1;
+}
+
 .halls-scheme__tab-content {
   display: none;
   width: 100%;
@@ -241,12 +250,6 @@ const selectTab = (tabId: number) => {
   }
 }
 
-@media screen and (min-width: 1200px) {
-  .halls-scheme__tab-content-image-big {
-    transform: translateX(-16px);
-  }
-}
-
 /* info */
 .halls-scheme-tab-content-info {
   border-radius: 16px;
@@ -259,15 +262,9 @@ const selectTab = (tabId: number) => {
 @media screen and (min-width: 960px) {
   .halls-scheme-tab-content-info {
     max-width: 536px;
-    margin: 55px 20px 30px 20px;
-    padding: 33px 10px 33px 37px;
-  }
-}
-
-@media screen and (min-width: 1200px) {
-  .halls-scheme-tab-content-info {
-    max-width: 536px;
-    margin: 55px 20px 30px 10.6vw;
+    margin-top: 55px;
+    margin-left: auto;
+    margin-right: auto;
     padding: 33px 10px 33px 37px;
   }
 }

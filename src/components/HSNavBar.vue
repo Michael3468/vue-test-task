@@ -1,19 +1,24 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router';
+
+const navigation = [
+  { link: '/', text: 'Расчет стоимости' },
+  { link: '/about', text: 'О нас' },
+  { link: '/registration', text: 'Выездная регистрация' },
+  { link: '/halls', text: 'Схемы залов' },
+  { link: '/menu', text: 'Меню' },
+  { link: '/gallery', text: 'Галерея' },
+  { link: '/feedback', text: 'Отзывы' },
+  { link: '/contacts', text: 'Контакты' },
+];
 </script>
 
 <template>
   <nav class="navbar">
-    <!-- TODO: v-for -->
     <ul class="navbar-links">
-      <li class="navbar-link"><RouterLink to="/">Расчет стоимости</RouterLink></li>
-      <li class="navbar-link"><RouterLink to="/about">О нас</RouterLink></li>
-      <li class="navbar-link"><RouterLink to="/registration">Выездная регистрация</RouterLink></li>
-      <li class="navbar-link"><RouterLink to="/halls">Схемы залов</RouterLink></li>
-      <li class="navbar-link"><RouterLink to="/menu">Меню</RouterLink></li>
-      <li class="navbar-link"><RouterLink to="/gallery">Галерея</RouterLink></li>
-      <li class="navbar-link"><RouterLink to="/feedback">Отзывы</RouterLink></li>
-      <li class="navbar-link"><RouterLink to="/contacts">Контакты</RouterLink></li>
+      <li class="navbar-link" v-for="item in navigation" :key="item.link">
+        <RouterLink :to="item.link">{{ item.text }}</RouterLink>
+      </li>
     </ul>
   </nav>
 </template>
@@ -27,10 +32,10 @@ import { RouterLink } from 'vue-router';
 }
 
 .navbar-links {
+  width: 100%;
   max-width: 320px;
   position: relative;
   background: var(--color-background);
-  width: 80vw;
   box-shadow: 0px 0px 10px black;
   padding: 20px;
   top: 30px;
@@ -45,7 +50,6 @@ import { RouterLink } from 'vue-router';
     box-shadow: none;
     background: none;
     padding: 0;
-    min-width: 100%;
   }
 }
 

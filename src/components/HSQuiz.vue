@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
-import HSButtonArrow from './HSButtonArrow.vue';
-import HSQuizText from './HSQuizText.vue';
+import { HSButtonArrow, HSQuizText } from '.';
 
 interface IQuestions {
   text: string;
@@ -22,6 +21,7 @@ let currentQuestionNumber = ref<number>(0);
 let chosenAnswer = ref<number>(0);
 const answers = ref<IAnswers[]>([]);
 
+// TODO: data to json
 const questions: IQuestions[] = [
   {
     text: 'Количество гостей',

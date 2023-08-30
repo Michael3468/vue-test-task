@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import HSButtonSocial from './HSButtonSocial.vue';
-import HSLogoFooter from './HSLogoFooter.vue';
+import { HSButtonSocial, HSLogoFooter } from '.';
 </script>
 
 <template>

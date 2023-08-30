@@ -1,9 +1,5 @@
 <script setup lang="js">
-import HSLogo from './HSLogo.vue';
-import HSBurger from './HSBurger.vue';
-import HSButtonCall from './HSButtonCall.vue';
-import HSButtonSocial from './HSButtonSocial.vue';
-import HSNavBar from './HSNavBar.vue';
+import { HSLogo, HSBurger, HSButtonCall, HSButtonSocial, HSNavBar } from '.';
 
 import { useModalStore } from '../stores/ModalStore';
 
